@@ -42,6 +42,18 @@ async function ensureSelfMigrations() {
       await db.query('ALTER TABLE "materials" ADD COLUMN IF NOT EXISTS "person_name" varchar(100);');
       await db.query('CREATE INDEX IF NOT EXISTS "materials_person_name_idx" ON "materials" ("person_name");');
     }
+
+    // V1：video_shots.shot_id 的全局唯一索引会导致「不同视频出现相同分镜ID」时插入失败。
+    // 分镜 ID 只需在单个 analysis 内有意义，故移除该唯一索引（pkey 与 analysis_id+shot_index 索引保留）。
+    await db.query('DROP INDEX IF EXISTS "video_shots_shot_id_key";');
+
+    // V1：person_name 可能聚合多个识别到的人名（、连接），varchar(100) 会溢出，扩容
+    await db.query('ALTER TABLE "materials" ALTER COLUMN "person_name" TYPE varchar(500);');
+    // V1：AI 回填的分类/质量等文本可能较长，统一扩容，避免 varchar 过短插入失败
+    await db.query('ALTER TABLE "materials" ALTER COLUMN "quality" TYPE varchar(255);');
+    await db.query('ALTER TABLE "materials" ALTER COLUMN "industry" TYPE varchar(255);');
+    await db.query('ALTER TABLE "materials" ALTER COLUMN "department" TYPE varchar(255);');
+    await db.query('ALTER TABLE "materials" ALTER COLUMN "feishu_record_id" TYPE varchar(255);');
   } catch (e) {
     console.warn('[db-cjs] 自我迁移失败:', e.message);
   }
@@ -322,6 +334,19 @@ async function findMaterialByHash(fileHash) {
   const r = await db.query(
     'SELECT business_id, product_name, file_name, file_path, analysis_status, shot_count FROM materials WHERE file_hash = $1 LIMIT 1;',
     [fileHash],
+  );
+  return r.rows[0] || null;
+}
+
+/**
+ * 用 飞书主表 record_id 查素材（后台飞书→DB 同步去重用）
+ */
+async function findMaterialByFeishuRecordId(recordId) {
+  if (!recordId) return null;
+  const db = getPglite();
+  const r = await db.query(
+    'SELECT business_id, product_name, file_name FROM materials WHERE feishu_record_id = $1 LIMIT 1;',
+    [recordId],
   );
   return r.rows[0] || null;
 }
@@ -856,6 +881,7 @@ module.exports = {
   deleteShotFromDb,
   syncMaterialToFeishu,
   findMaterialByHash,
+  findMaterialByFeishuRecordId,
   findMaterialByBusinessId,
   computeFileHash,
 };

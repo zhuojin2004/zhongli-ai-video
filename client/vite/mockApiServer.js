@@ -3043,6 +3043,17 @@ async function handleApi(req, res) {
     return
   }
 
+  // V1：手动触发飞书→DB 同步（管理/验证用）
+  if (url === '/api/admin/sync-feishu' && method === 'POST') {
+    try {
+      const r = await syncFeishuVideosToDb('manual')
+      sendJson(res, r)
+    } catch (e) {
+      sendError(res, `sync failed: ${e.message}`, 500)
+    }
+    return
+  }
+
   // ── File Upload (bypass getDataloom in dev) ────────────────────────────────
   if (url === '/api/upload' && method === 'POST') {
     const contentType = req.headers['content-type'] || ''
@@ -4145,7 +4156,8 @@ async function handleApi(req, res) {
     try {
       // ⚠️ 业务员视图隔离：先解析身份，再裁剪 videos
       const ctx = await getRequestUser(req)
-      const cloud = await fetchAllVideosFromFeishuCloud()
+      // V1：列表直查 DB（毫秒级），不在请求时实时拉飞书；飞书数据由后台增量同步进 DB
+      const cloud = { videos: [] }
       const scopedVideos = ctx.isSalesperson
         ? cloud.videos.filter((v) => videoBelongsToSalesperson(v, ctx.user?.name))
         : cloud.videos
@@ -4211,7 +4223,8 @@ async function handleApi(req, res) {
         let sampleFileName = ''
         let sampleUrl = ''
         try {
-          const cloud = await fetchAllVideosFromFeishuCloud()
+          // V1：列表直查 DB，业务员自己的统计也走 DB（下方 employee/:name 取明细）
+          const cloud = { videos: [] }
           const mine = cloud.videos.filter((v) => videoBelongsToSalesperson(v, own))
           shotCount = mine.reduce((acc, v) => acc + (v.shots?.length || 0), 0)
           if (mine.length > 0) {
@@ -4231,7 +4244,8 @@ async function handleApi(req, res) {
         sendJson(res, me)
         return
       }
-      const cloud = await fetchAllVideosFromFeishuCloud()
+      // V1：列表直查 DB，不实时拉飞书
+      const cloud = { videos: [] }
       if (cloud.videos.length > 0) {
         // 按 姓名 分组：仅用「分镜表·姓名」字段（飞书实际字段名）
         // 视频归到某员工名下 ⇔ 该视频至少有一条分镜的「姓名」字段包含该员工姓名
@@ -4302,7 +4316,8 @@ async function handleApi(req, res) {
     try {
       // ⚠️ 业务员视图隔离：先解析身份，强制只返回自己参与的视频
       const ctx = await getRequestUser(req)
-      const cloud = await fetchAllVideosFromFeishuCloud()
+      // V1：列表直查 DB
+      const cloud = { videos: [] }
       let all = cloud.videos.filter(v => (v.productModel || '') === model)
       if (ctx.isSalesperson) {
         all = all.filter((v) => videoBelongsToSalesperson(v, ctx.user?.name))
@@ -4364,7 +4379,8 @@ async function handleApi(req, res) {
           name = own
         }
       }
-      const cloud = await fetchAllVideosFromFeishuCloud()
+      // V1：列表直查 DB
+      const cloud = { videos: [] }
       // 同时检查主视频表人物标签和分镜表「人物姓名（如果有）」，
       // 确保只要该员工出现在任意对应分镜中，就能看到所属视频。
       const all = cloud.videos.filter(v => videoBelongsToSalesperson(v, name))
@@ -4408,7 +4424,8 @@ async function handleApi(req, res) {
     try {
       // ⚠️ 业务员视图隔离：业务员只能看自己的某条素材详情，别人的 → 404
       const ctx = await getRequestUser(req)
-      const cloud = await fetchAllVideosFromFeishuCloud()
+      // V1：详情直查 DB
+      const cloud = { videos: [] }
       // 优先按 id/recordId/fileName 精确匹配
       let mat = cloud.videos.find(v => v.id === materialId || v.feishuRecordId === materialId)
       if (!mat) {
@@ -5878,6 +5895,66 @@ const server = http.createServer(async (req, res) => {
   }
 })
 
+// ── V1：飞书 → DB 后台增量同步（请求链路不再实时拉飞书，列表直查 DB）─────────
+let _feishuSyncing = false
+async function syncFeishuVideosToDb(reason = 'scheduled') {
+  if (!dbCjs) return { synced: 0, reason }
+  if (_feishuSyncing) { console.log('[feishu-sync] 上一轮仍在进行，本轮跳过'); return { skipped: true } }
+  _feishuSyncing = true
+  const t0 = Date.now()
+  try {
+    const cloud = await fetchAllVideosFromFeishuCloud()
+    let inserted = 0, updated = 0, failed = 0
+    for (const v of cloud.videos) {
+      try {
+        const baseName = (v.fileName || '').split('/').pop()
+        const productName = v.productModel || v.productName || (baseName || '').replace(/\.[^.]+$/, '') || '未分类'
+        // 稳定 businessId：已存在（按飞书 recordId / fileHash）则沿用并更新，否则用 feishu_<recordId> 新建
+        let businessId = null
+        const byRec = v.feishuRecordId ? await dbCjs.findMaterialByFeishuRecordId(v.feishuRecordId) : null
+        if (byRec) { businessId = byRec.business_id; updated++ }
+        else {
+          const byHash = v.fileHash ? await dbCjs.findMaterialByHash(v.fileHash) : null
+          if (byHash) { businessId = byHash.business_id; updated++ }
+          else { businessId = `feishu_${v.feishuRecordId || v.id || baseName}`; inserted++ }
+        }
+        await dbCjs.upsertMaterial({
+          businessId,
+          type: 'product',
+          productName,
+          fileName: baseName,
+          filePath: '',
+          playableUrl: v.playableUrl || v.videoUrl || '',
+          thumbnailUrl: v.thumbnailUrl || '',
+          industry: v.industry || '',
+          quality: v.quality || '',
+          personName: v.personName || null,
+          analysisStatus: 'done',
+          totalDuration: v.totalDuration || 0,
+          shotCount: v.shotCount || 0,
+          sellingPointTags: v.sellingPointTags || [],
+          sceneVideoUrls: v.videoUrl ? [v.videoUrl] : (v.playableUrl ? [v.playableUrl] : []),
+          source: 'feishu',
+          feishuRecordId: v.feishuRecordId || '',
+          description: v.fileName || '',
+          fileHash: v.fileHash || '',
+          shots: Array.isArray(v.shots) ? v.shots : [],
+        })
+      } catch (e) {
+        failed++
+        console.warn(`[feishu-sync] 同步失败 ${(v.fileName || '').split('/').pop()}: ${e.message}`)
+      }
+    }
+    console.log(`[feishu-sync] (${reason}) 完成：新增 ${inserted} / 更新 ${updated} / 失败 ${failed}，共 ${cloud.videos.length}，耗时 ${((Date.now() - t0) / 1000).toFixed(1)}s`)
+    return { inserted, updated, failed, total: cloud.videos.length }
+  } catch (e) {
+    console.error(`[feishu-sync] (${reason}) 拉取失败: ${e.message}`)
+    return { error: e.message }
+  } finally {
+    _feishuSyncing = false
+  }
+}
+
 server.listen(PORT, () => {
   console.log(`[mock-api] =========================================`)
   console.log(`[mock-api]  真实能力 API Server 启动`)
@@ -5888,6 +5965,9 @@ server.listen(PORT, () => {
   console.log(`[mock-api]  FFmpeg: ${process.env.FFMPEG_PATH || '/Users/jensen/miniconda3/bin/ffmpeg'}`)
   console.log(`[mock-api]  视频目录: ${CFG.videoDir}`)
   console.log(`[mock-api] =========================================`)
+  // V1：启动 2s 后后台做一次飞书→DB 全量同步（不阻塞监听），之后每 10 分钟增量
+  setTimeout(() => { syncFeishuVideosToDb('startup').catch(() => {}) }, 2000)
+  setInterval(() => { syncFeishuVideosToDb('incremental').catch(() => {}) }, 10 * 60 * 1000)
 })
 
 server.on('error', (err) => {
