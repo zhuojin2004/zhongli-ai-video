@@ -1,0 +1,408 @@
+{
+  "shotTable": {
+    "id": "tblJEJtnvP4Rtlno",
+    "fields": [
+      {
+        "field_id": "fldIgUHCTz",
+        "field_name": "分镜 ID",
+        "is_extend": false,
+        "is_primary": true,
+        "is_synced": false,
+        "property": null,
+        "type": 1,
+        "ui_type": "Text"
+      },
+      {
+        "field_id": "fldmbThDWt",
+        "field_name": "视频文件名",
+        "is_extend": false,
+        "is_primary": false,
+        "is_synced": false,
+        "property": null,
+        "type": 1,
+        "ui_type": "Text"
+      },
+      {
+        "field_id": "fldzOXJ9qG",
+        "field_name": "产品型号",
+        "is_extend": false,
+        "is_primary": false,
+        "is_synced": false,
+        "property": null,
+        "type": 1,
+        "ui_type": "Text"
+      },
+      {
+        "field_id": "fldbKedj5O",
+        "field_name": "开始时间 (s)",
+        "is_extend": false,
+        "is_primary": false,
+        "is_synced": false,
+        "property": {
+          "formatter": "0.00"
+        },
+        "type": 2,
+        "ui_type": "Number"
+      },
+      {
+        "field_id": "fldzR03AoV",
+        "field_name": "结束时间 (s)",
+        "is_extend": false,
+        "is_primary": false,
+        "is_synced": false,
+        "property": {
+          "formatter": "0.00"
+        },
+        "type": 2,
+        "ui_type": "Number"
+      },
+      {
+        "field_id": "fldKsdp6ak",
+        "field_name": "原视频地址",
+        "is_extend": false,
+        "is_primary": false,
+        "is_synced": false,
+        "property": null,
+        "type": 1,
+        "ui_type": "Text"
+      },
+      {
+        "field_id": "fldab5cVG1",
+        "field_name": "画面描述",
+        "is_extend": false,
+        "is_primary": false,
+        "is_synced": false,
+        "property": null,
+        "type": 1,
+        "ui_type": "Text"
+      },
+      {
+        "field_id": "fldstEhKmi",
+        "field_name": "产品型号_分镜",
+        "is_extend": false,
+        "is_primary": false,
+        "is_synced": false,
+        "property": null,
+        "type": 1,
+        "ui_type": "Text"
+      },
+      {
+        "field_id": "fldO6Q1m55",
+        "field_name": "场景",
+        "is_extend": false,
+        "is_primary": false,
+        "is_synced": false,
+        "property": null,
+        "type": 1,
+        "ui_type": "Text"
+      },
+      {
+        "field_id": "fldummseqa",
+        "field_name": "物体",
+        "is_extend": false,
+        "is_primary": false,
+        "is_synced": false,
+        "property": null,
+        "type": 1,
+        "ui_type": "Text"
+      },
+      {
+        "field_id": "fldnSbyrIC",
+        "field_name": "动作",
+        "is_extend": false,
+        "is_primary": false,
+        "is_synced": false,
+        "property": null,
+        "type": 1,
+        "ui_type": "Text"
+      },
+      {
+        "field_id": "fldnfOAMC5",
+        "field_name": "镜头",
+        "is_extend": false,
+        "is_primary": false,
+        "is_synced": false,
+        "property": null,
+        "type": 1,
+        "ui_type": "Text"
+      },
+      {
+        "field_id": "fldj6FTqLo",
+        "field_name": "卖点",
+        "is_extend": false,
+        "is_primary": false,
+        "is_synced": false,
+        "property": null,
+        "type": 1,
+        "ui_type": "Text"
+      },
+      {
+        "field_id": "fld62nAaOG",
+        "field_name": "时长 (s)",
+        "is_extend": false,
+        "is_primary": false,
+        "is_synced": false,
+        "property": {
+          "formatter": "",
+          "formula_expression": "bitable::$table[tblJEJtnvP4Rtlno].$field[fldzR03AoV]-bitable::$table[tblJEJtnvP4Rtlno].$field[fldbKedj5O]",
+          "type": {
+            "data_type": 2,
+            "ui_property": {
+              "formatter": "0.00"
+            },
+            "ui_type": "Number"
+          }
+        },
+        "type": 20,
+        "ui_type": "Formula"
+      },
+      {
+        "field_id": "fldLYzSKFN",
+        "field_name": "姓名",
+        "is_extend": false,
+        "is_primary": false,
+        "is_synced": false,
+        "property": null,
+        "type": 1,
+        "ui_type": "Text"
+      },
+      {
+        "field_id": "fldiC1ipQW",
+        "field_name": "关联的原视频",
+        "is_extend": false,
+        "is_primary": false,
+        "is_synced": false,
+        "property": {
+          "back_field_id": "flduKdmiBT",
+          "back_field_name": "反向关联分镜",
+          "multiple": true,
+          "table_id": "tblHAulQSuPQyDfE",
+          "table_name": "主视频表"
+        },
+        "type": 21,
+        "ui_type": "DuplexLink"
+      },
+      {
+        "field_id": "fldiFbVNPM",
+        "field_name": "行业",
+        "is_extend": false,
+        "is_primary": false,
+        "is_synced": false,
+        "property": null,
+        "type": 1,
+        "ui_type": "Text"
+      }
+    ]
+  },
+  "mainTable": {
+    "id": "tblHAulQSuPQyDfE",
+    "fields": [
+      {
+        "field_id": "fldqLeaZHh",
+        "field_name": "视频文件名",
+        "is_extend": false,
+        "is_primary": true,
+        "is_synced": false,
+        "property": null,
+        "type": 1,
+        "ui_type": "Text"
+      },
+      {
+        "field_id": "fldByeO9cE",
+        "field_name": "文件 Hash 值",
+        "is_extend": false,
+        "is_primary": false,
+        "is_synced": false,
+        "property": null,
+        "type": 1,
+        "ui_type": "Text"
+      },
+      {
+        "field_id": "fld0MLjF4H",
+        "field_name": "OSS 云端地址",
+        "is_extend": false,
+        "is_primary": false,
+        "is_synced": false,
+        "property": null,
+        "type": 1,
+        "ui_type": "Text"
+      },
+      {
+        "field_id": "fldAGe7t7y",
+        "field_name": "总时长 (s)",
+        "is_extend": false,
+        "is_primary": false,
+        "is_synced": false,
+        "property": null,
+        "type": 1,
+        "ui_type": "Text"
+      },
+      {
+        "field_id": "fldsxfPNO5",
+        "field_name": "分析状态",
+        "is_extend": false,
+        "is_primary": false,
+        "is_synced": false,
+        "property": {
+          "options": [
+            {
+              "color": 0,
+              "id": "optoaQ4DHj",
+              "name": "未分析"
+            },
+            {
+              "color": 1,
+              "id": "optCUX7zZd",
+              "name": "分析中"
+            },
+            {
+              "color": 2,
+              "id": "optLqxPKFb",
+              "name": "已分析"
+            },
+            {
+              "color": 3,
+              "id": "opt1875812168",
+              "name": "内容审核拦截"
+            },
+            {
+              "color": 4,
+              "id": "opt1202557191",
+              "name": "分析失败"
+            }
+          ]
+        },
+        "type": 3,
+        "ui_type": "SingleSelect"
+      },
+      {
+        "field_id": "flddI8dhIz",
+        "field_name": "入库时间",
+        "is_extend": false,
+        "is_primary": false,
+        "is_synced": false,
+        "property": {
+          "date_formatter": "yyyy/MM/dd"
+        },
+        "type": 1001,
+        "ui_type": "CreatedTime"
+      },
+      {
+        "field_id": "flduKdmiBT",
+        "field_name": "反向关联分镜",
+        "is_extend": false,
+        "is_primary": false,
+        "is_synced": false,
+        "property": {
+          "back_field_id": "fldiC1ipQW",
+          "back_field_name": "数据表",
+          "multiple": true,
+          "table_id": "tblJEJtnvP4Rtlno",
+          "table_name": "分镜任务库"
+        },
+        "type": 21,
+        "ui_type": "DuplexLink"
+      },
+      {
+        "field_id": "fld5lW5wra",
+        "field_name": "产品型号",
+        "is_extend": false,
+        "is_primary": false,
+        "is_synced": false,
+        "property": null,
+        "type": 1,
+        "ui_type": "Text"
+      },
+      {
+        "field_id": "fldYGQB0W5",
+        "field_name": "行业",
+        "is_extend": false,
+        "is_primary": false,
+        "is_synced": false,
+        "property": null,
+        "type": 1,
+        "ui_type": "Text"
+      },
+      {
+        "field_id": "fldN0hAuM6",
+        "field_name": "客户",
+        "is_extend": false,
+        "is_primary": false,
+        "is_synced": false,
+        "property": null,
+        "type": 1,
+        "ui_type": "Text"
+      },
+      {
+        "field_id": "fldtIZuhIW",
+        "field_name": "部门",
+        "is_extend": false,
+        "is_primary": false,
+        "is_synced": false,
+        "property": null,
+        "type": 1,
+        "ui_type": "Text"
+      },
+      {
+        "field_id": "fldV9cKgcb",
+        "field_name": "素材质量",
+        "is_extend": false,
+        "is_primary": false,
+        "is_synced": false,
+        "property": null,
+        "type": 1,
+        "ui_type": "Text"
+      },
+      {
+        "field_id": "fldeVtEvw9",
+        "field_name": "分类标签",
+        "is_extend": false,
+        "is_primary": false,
+        "is_synced": false,
+        "property": null,
+        "type": 1,
+        "ui_type": "Text"
+      },
+      {
+        "field_id": "fldQ7AM2dv",
+        "field_name": "人物标签",
+        "is_extend": false,
+        "is_primary": false,
+        "is_synced": false,
+        "property": null,
+        "type": 1,
+        "ui_type": "Text"
+      },
+      {
+        "field_id": "fldoxtJqVR",
+        "field_name": "卖点标签",
+        "is_extend": false,
+        "is_primary": false,
+        "is_synced": false,
+        "property": null,
+        "type": 1,
+        "ui_type": "Text"
+      },
+      {
+        "field_id": "fldx6b8Q1O",
+        "field_name": "封面图",
+        "is_extend": false,
+        "is_primary": false,
+        "is_synced": false,
+        "property": null,
+        "type": 17,
+        "ui_type": "Attachment"
+      },
+      {
+        "field_id": "fld0NOnRjl",
+        "field_name": "时长显示",
+        "is_extend": false,
+        "is_primary": false,
+        "is_synced": false,
+        "property": null,
+        "type": 1,
+        "ui_type": "Text"
+      }
+    ]
+  }
+}

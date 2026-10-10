@@ -1,0 +1,32 @@
+{
+  "id": "product_image_generator_1",
+  "pluginKey": "@official-plugins/ai-text-to-image",
+  "pluginVersion": "1.0.21",
+  "name": "产品展示图生成器",
+  "description": "在内容生产工作流中根据产品描述生成高质量产品展示图",
+  "icon": "",
+  "paramsSchema": {
+    "type": "object",
+    "properties": {
+      "product_description": {
+        "type": "string",
+        "description": "产品的详细描述信息，包含产品类型、外观特点、材质、使用场景等"
+      },
+      "image_ratio": {
+        "type": "string",
+        "description": "生成图片的比例，可选值：1:1、4:3、3:4、16:9、9:16、3:2、2:3"
+      }
+    },
+    "required": [
+      "product_description"
+    ]
+  },
+  "formValue": {
+    "prompt": "你是一位专业的商业产品摄影大师，擅长拍摄能够突出产品优势的高质量展示图。请根据以下产品描述生成一张专业的产品展示图：\n产品描述：{{input.product_description}}\n\n图片要求：\n1. 风格：专业商业摄影风格，光线柔和均匀，色彩真实自然\n2. 构图：产品主体居中突出，背景简洁干净，突出产品本身\n3. 细节：清晰展示产品的材质、纹理和关键特征\n4. 光影：使用专业布光，避免阴影过重或反光过度\n5. 整体效果：视觉吸引力强，符合电商平台产品展示标准",
+    "ratio": "{{input.image_ratio}}",
+    "watermark": false
+  },
+  "createdAt": 1788143827219,
+  "updatedAt": 1788143827219,
+  "createdBy": 7664530520713202977
+}

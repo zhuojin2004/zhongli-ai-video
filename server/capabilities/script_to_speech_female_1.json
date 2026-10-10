@@ -1,0 +1,29 @@
+{
+  "id": "script_to_speech_female_1",
+  "pluginKey": "@official-plugins/ai-speech-synthesis",
+  "pluginVersion": "1.0.13",
+  "name": "脚本转语音(中文女声)",
+  "description": "在内容生产工作流中将生成的脚本转换为情感丰富、表现力强的中文女声语音，适合旁白、故事讲述、新闻播报等场景",
+  "icon": "",
+  "paramsSchema": {
+    "type": "object",
+    "properties": {
+      "script_content": {
+        "type": "string",
+        "description": "要转换为语音的脚本内容，最多3000字符"
+      }
+    },
+    "required": [
+      "script_content"
+    ]
+  },
+  "formValue": {
+    "volumeRatio": "1.0",
+    "text": "{{input.script_content}}",
+    "voiceType": "zh_female_gushijiangshu_mars_bigtts",
+    "speedRatio": "1.05"
+  },
+  "createdAt": 1788143848350,
+  "updatedAt": 1788231846811,
+  "createdBy": 7664530520713202977
+}

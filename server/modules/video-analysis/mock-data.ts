@@ -1,0 +1,48 @@
+export const MOCK_VIDEO_TAGS = [
+  {
+    productModel: 'EPT20-20ETC',
+    totalDuration: 62.6,
+    shotCount: 15,
+    shots: [
+      { startTime: 0, endTime: 5, description: '冷库内部环境，蓝色货架与橙色横梁并列，地面摆放蓝色塑料筐', scene: '冷库', objects: '货架、塑料筐', action: '环境展示', camera: '全景', coreSellingPoint: '耐低温环境', sellingPoint: '冷链仓储适应性', narrationText: '在零下25度的冷库中，EPT20-20ETC依然稳定运行' },
+      { startTime: 5, endTime: 12, description: '一台红色电动搬运车从冷库通道驶出，画面叠加型号与-25℃高效搬运字样', scene: '冷库通道', objects: '电动搬运车、货叉', action: '行驶', camera: '中景跟拍', coreSellingPoint: '耐低温环境', sellingPoint: '冷链仓储适应性', narrationText: 'EPT20-20ETC冷库专用搬运车，专为极端环境而生' },
+      { startTime: 12, endTime: 18, description: '搬运车叉取托盘，平稳举升货物，操作流畅无抖动', scene: '仓库', objects: '搬运车、托盘、货物', action: '叉取举升', camera: '特写', coreSellingPoint: '精准堆垛', sellingPoint: '精准堆垛', narrationText: '精准堆垛，毫厘不差' },
+      { startTime: 18, endTime: 25, description: '搬运车在狭窄通道中灵活转弯，车身紧凑不碰货架', scene: '仓库通道', objects: '搬运车、货架', action: '转弯行驶', camera: '跟拍', coreSellingPoint: '窄通道适配', sellingPoint: '窄通道适配', narrationText: '仅需1.8米通道宽度，狭小空间游刃有余' },
+      { startTime: 25, endTime: 32, description: '操作员手持遥控器远程操控搬运车，车辆自动行驶', scene: '仓库', objects: '搬运车、遥控器', action: '远程操控', camera: '中景', coreSellingPoint: '智能操控', sellingPoint: '一键操作', narrationText: '远程遥控，一键操作，智能搬运新体验' },
+      { startTime: 32, endTime: 38, description: '搬运车自动识别障碍物并减速避让', scene: '仓库', objects: '搬运车、障碍物', action: '自动避障', camera: '俯拍', coreSellingPoint: '自动避障', sellingPoint: '安全可靠', narrationText: '自动避障系统，安全护航每一程' },
+      { startTime: 38, endTime: 45, description: '特写电池仓和充电接口，展示快充能力', scene: '充电区', objects: '搬运车、充电桩', action: '充电展示', camera: '特写', coreSellingPoint: '快速充电', sellingPoint: '超长续航', narrationText: '快充1小时，续航8小时，全天候作业不停歇' },
+      { startTime: 45, endTime: 50, description: '多台搬运车在仓库中同时作业，高效协同', scene: '仓库全景', objects: '多台搬运车、货架', action: '协同作业', camera: '全景', coreSellingPoint: '高效搬运', sellingPoint: '零排放', narrationText: '零排放，静音运行，绿色仓储新标杆' },
+      { startTime: 50, endTime: 56, description: '产品外观360度展示，红色车身搭配黑色轮毂', scene: '展示区', objects: '搬运车', action: '产品展示', camera: '旋转展示', coreSellingPoint: '静音液压', sellingPoint: '静音液压', narrationText: '时尚外观，静音液压，科技与美学的完美结合' },
+      { startTime: 56, endTime: 62.6, description: '中力品牌logo与产品型号定格画面', scene: '品牌展示', objects: 'logo', action: '定格', camera: '固定', coreSellingPoint: '中力品质', sellingPoint: '品牌信赖', narrationText: '中力叉车，让搬运更简单' },
+    ],
+  },
+  {
+    productModel: 'FE3R12N',
+    totalDuration: 45.2,
+    shotCount: 10,
+    shots: [
+      { startTime: 0, endTime: 4, description: '工厂车间全景，生产线忙碌运转', scene: '工厂车间', objects: '生产线、工人', action: '环境展示', camera: '全景', coreSellingPoint: '工厂产线适配', sellingPoint: '工厂产线', narrationText: '在繁忙的工厂产线中，FE3R12N是您最可靠的搬运伙伴' },
+      { startTime: 4, endTime: 10, description: '前移式叉车精准叉取高层货架上的货物', scene: '高层货架区', objects: '前移式叉车、货架、货物', action: '高位叉取', camera: '仰拍', coreSellingPoint: '高层货架适配', sellingPoint: '精准堆垛', narrationText: '高位精准取放，最大化利用仓储空间' },
+      { startTime: 10, endTime: 16, description: '叉车在户外货场搬运大型货物，阳光下稳定运行', scene: '户外货场', objects: '叉车、大型货物', action: '户外搬运', camera: '中景', coreSellingPoint: '户外作业', sellingPoint: '全天候作业', narrationText: '无惧风雨，户外作业同样出色' },
+      { startTime: 16, endTime: 22, description: '操作员特写：轻松操控方向盘，仪表盘数据清晰可见', scene: '驾驶室', objects: '方向盘、仪表盘', action: '驾驶操控', camera: '特写', coreSellingPoint: '智能操控', sellingPoint: '人性化设计', narrationText: '人性化驾驶室设计，操作舒适便捷' },
+      { startTime: 22, endTime: 28, description: '叉车满载货物平稳行驶，转弯时自动减速', scene: '仓库通道', objects: '叉车、货物', action: '载货行驶', camera: '跟拍', coreSellingPoint: '安全稳定', sellingPoint: '载重稳定', narrationText: '满载3.5吨依然平稳如初，安全可靠' },
+      { startTime: 28, endTime: 34, description: '3D动画展示叉车内部结构与锂电池布局', scene: '3D演示', objects: '电池、电机', action: '结构展示', camera: '3D旋转', coreSellingPoint: '超长续航', sellingPoint: '锂电池', narrationText: '大容量锂电池，单次充电续航10小时' },
+      { startTime: 34, endTime: 40, description: '叉车与AGV协同作业，无人化搬运场景', scene: '智能仓库', objects: '叉车、AGV', action: '协同作业', camera: '全景', coreSellingPoint: '智能协同', sellingPoint: '无人化', narrationText: '与AGV无缝协同，迈向智能仓储新时代' },
+      { startTime: 40, endTime: 45.2, description: '产品定格展示，品牌logo与型号', scene: '展示区', objects: '叉车', action: '展示', camera: '固定', coreSellingPoint: '中力品质', sellingPoint: '品牌信赖', narrationText: '中力FE3R12N，前移式叉车新标杆' },
+    ],
+  },
+  {
+    productModel: 'ICE301B',
+    totalDuration: 38.0,
+    shotCount: 8,
+    shots: [
+      { startTime: 0, endTime: 4, description: '商超配送中心，搬运车在货架间穿梭', scene: '商超配送中心', objects: '搬运车、货架', action: '穿梭搬运', camera: '全景', coreSellingPoint: '商超配送', sellingPoint: '商超配送', narrationText: '商超配送，高效搬运，让货架永远不缺货' },
+      { startTime: 4, endTime: 10, description: '搬运车叉取饮料托盘，精确码放至货架指定位置', scene: '商超仓库', objects: '搬运车、饮料托盘', action: '码放作业', camera: '中景', coreSellingPoint: '精准堆垛', sellingPoint: '精准堆垛', narrationText: '精准码放，杜绝货损' },
+      { startTime: 10, endTime: 16, description: '真人操作员演示一键自动归位功能', scene: '仓库', objects: '搬运车、操作员', action: '一键归位', camera: '中景', coreSellingPoint: '一键操作', sellingPoint: '一键操作', narrationText: '一键归位，新手也能轻松上手' },
+      { startTime: 16, endTime: 22, description: '夜晚仓库中搬运车自动充电场景', scene: '充电区', objects: '搬运车、充电桩', action: '自动充电', camera: '固定', coreSellingPoint: '快速充电', sellingPoint: '自动充电', narrationText: '夜间自动充电，白天满电出发' },
+      { startTime: 22, endTime: 28, description: '对比演示：传统搬运车 vs ICE301B 噪音对比', scene: '测试区', objects: '两台搬运车', action: '对比测试', camera: '分屏', coreSellingPoint: '静音液压', sellingPoint: '静音液压', narrationText: '噪音降低60%，安静守护商超环境' },
+      { startTime: 28, endTime: 33, description: '数据可视化：能耗对比图表展示零排放优势', scene: '数据展示', objects: '图表', action: '数据展示', camera: '固定', coreSellingPoint: '零排放', sellingPoint: '零排放', narrationText: '零排放，绿色商超的明智之选' },
+      { startTime: 33, endTime: 38, description: '产品定格展示，品牌logo与型号', scene: '展示区', objects: '搬运车', action: '展示', camera: '固定', coreSellingPoint: '品牌信赖', sellingPoint: '中力品质', narrationText: '中力ICE301B，商超搬运专家' },
+    ],
+  },
+]

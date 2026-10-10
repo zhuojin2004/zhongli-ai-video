@@ -1,0 +1,40 @@
+{
+  "id": "generate_sales_podcast_script_1",
+  "pluginKey": "@official-plugins/ai-text-generate",
+  "pluginVersion": "1.0.21",
+  "name": "销售口播脚本自动生成",
+  "description": "在内容生产工作流中根据产品信息和销售员人设标签，自动生成符合要求的口播脚本",
+  "icon": "",
+  "paramsSchema": {
+    "type": "object",
+    "properties": {
+      "product_info": {
+        "type": "string",
+        "description": "产品详细信息，包括功能特点、优势、适用人群、价格等"
+      },
+      "salesperson_persona": {
+        "type": "string",
+        "description": "销售员人设标签，如专业严谨、亲切活泼、幽默风趣等风格描述"
+      },
+      "additional_requirements": {
+        "type": "string",
+        "description": "其他自定义要求，如脚本时长、特定话术要求等（可选）"
+      }
+    },
+    "required": [
+      "product_info",
+      "salesperson_persona"
+    ]
+  },
+  "formValue": {
+    "modelID": "2015",
+    "modelParams": {
+      "maxTokens": 8192,
+      "temperature": 0.5
+    },
+    "prompt": "你是一位资深的短视频口播脚本创作专家，擅长根据不同人设和产品特点创作高转化率的口播内容。\n\n请根据以下信息生成口播脚本：\n产品信息：{{input.product_info}}\n销售员人设：{{input.salesperson_persona}}\n额外要求：{{input.additional_requirements}}\n\n脚本要求：\n1. 开头（前3秒）：使用钩子吸引用户注意力，可采用提问、痛点直击或惊喜预告的方式\n2. 正文：\n   - 符合{{input.salesperson_persona}}的人设风格，语言自然口语化\n   - 突出产品核心卖点和用户价值，避免生硬推销\n   - 加入真实感的表达，如个人使用体验、客户反馈等\n   - 逻辑清晰，层层递进，引导用户产生购买兴趣\n3. 结尾：\n   - 清晰的行动指令，引导用户点赞、关注、咨询或购买\n   - 语气诚恳有亲和力\n4. 整体时长控制在60-90秒左右，语言简洁流畅，符合口播表达习惯，避免书面语\n5. 标注出适合的语气、停顿和表情提示，方便销售员演绎"
+  },
+  "createdAt": 1788143831017,
+  "updatedAt": 1788143831017,
+  "createdBy": 7664530520713202977
+}

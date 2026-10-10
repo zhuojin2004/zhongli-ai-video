@@ -1,0 +1,18 @@
+# Railway/Nixpacks 构建配置
+# 告诉 Railway 怎么装依赖、怎么构建、怎么启动
+
+[phases.setup]
+# 启用 pnpm（如果用 pnpm）或保持 npm 默认
+# nixPkgs = ["nodejs-18_x", "ffmpeg"]
+
+[phases.install]
+# 安装依赖（含 devDependencies，构建需要）
+cmd = "npm ci --include=dev"
+
+[phases.build]
+# 构建服务端 + 客户端
+cmd = "npm run build:prod"
+
+[start]
+# 启动生产服务
+cmd = "npm run start"

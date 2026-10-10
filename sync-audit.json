@@ -1,0 +1,1482 @@
+{
+  "stats": {
+    "total": 104,
+    "NOT_IN_FEISHU": 70,
+    "IN_FEISHU_BRIEF": 30,
+    "IN_FEISHU_PARTIAL": 0,
+    "IN_FEISHU_DETAILED": 0,
+    "IN_FEISHU_NO_SHOTS": 4,
+    "needsAction": 104
+  },
+  "matrix": [
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/包装行业/RPG-丰融.mp4",
+      "relPath": "包装行业/RPG-丰融.mp4",
+      "fileName": "RPG-丰融.mp4",
+      "industry": "包装行业",
+      "size": 79007696,
+      "mtime": "2025-12-30T01:36:50.000Z",
+      "status": "IN_FEISHU_BRIEF",
+      "action": "RE_ANALYZE",
+      "mainRecordId": "recvufaluBriE0",
+      "shotCount": 7,
+      "assessment": {
+        "quality": "BRIEF",
+        "score": 30,
+        "issues": [
+          "missing_cover=7",
+          "missing_dur_label=7"
+        ],
+        "avgDesc": 137,
+        "hasCover": 0,
+        "hasDurationLabel": 0,
+        "timeStampValid": 7
+      }
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/包装行业/RPG-凯圣兰.mp4",
+      "relPath": "包装行业/RPG-凯圣兰.mp4",
+      "fileName": "RPG-凯圣兰.mp4",
+      "industry": "包装行业",
+      "size": 71746657,
+      "mtime": "2026-01-22T01:52:48.000Z",
+      "status": "IN_FEISHU_BRIEF",
+      "action": "RE_ANALYZE",
+      "mainRecordId": "recvufalQn6OPR",
+      "shotCount": 7,
+      "assessment": {
+        "quality": "BRIEF",
+        "score": 30,
+        "issues": [
+          "missing_cover=7",
+          "missing_dur_label=7"
+        ],
+        "avgDesc": 144,
+        "hasCover": 0,
+        "hasDurationLabel": 0,
+        "timeStampValid": 7
+      }
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/包装行业/RPG-凯顺.mp4",
+      "relPath": "包装行业/RPG-凯顺.mp4",
+      "fileName": "RPG-凯顺.mp4",
+      "industry": "包装行业",
+      "size": 24083620,
+      "mtime": "2026-01-29T14:46:54.000Z",
+      "status": "IN_FEISHU_BRIEF",
+      "action": "RE_ANALYZE",
+      "mainRecordId": "recvushflUK65r",
+      "shotCount": 9,
+      "assessment": {
+        "quality": "BRIEF",
+        "score": 30,
+        "issues": [
+          "avg_desc=57<60",
+          "missing_cover=9",
+          "missing_dur_label=9"
+        ],
+        "avgDesc": 57,
+        "hasCover": 0,
+        "hasDurationLabel": 0,
+        "timeStampValid": 9
+      }
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/包装行业/RPG-和泰.mp4",
+      "relPath": "包装行业/RPG-和泰.mp4",
+      "fileName": "RPG-和泰.mp4",
+      "industry": "包装行业",
+      "size": 164061934,
+      "mtime": "2025-11-27T06:29:30.000Z",
+      "status": "IN_FEISHU_NO_SHOTS",
+      "action": "RE_ANALYZE",
+      "mainRecordId": "recvufhTmPnrfh",
+      "shotCount": 0
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/包装行业/RPG-善源.mp4",
+      "relPath": "包装行业/RPG-善源.mp4",
+      "fileName": "RPG-善源.mp4",
+      "industry": "包装行业",
+      "size": 264897053,
+      "mtime": "2025-12-03T01:01:34.000Z",
+      "status": "IN_FEISHU_NO_SHOTS",
+      "action": "RE_ANALYZE",
+      "mainRecordId": "recvufi1v9tb1n",
+      "shotCount": 0
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/包装行业/RPG-大德玉.mp4",
+      "relPath": "包装行业/RPG-大德玉.mp4",
+      "fileName": "RPG-大德玉.mp4",
+      "industry": "包装行业",
+      "size": 256016926,
+      "mtime": "2026-01-31T04:01:24.000Z",
+      "status": "IN_FEISHU_NO_SHOTS",
+      "action": "RE_ANALYZE",
+      "mainRecordId": "recvufhZfRAavM",
+      "shotCount": 0
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/包装行业/RPG-欧克.mp4",
+      "relPath": "包装行业/RPG-欧克.mp4",
+      "fileName": "RPG-欧克.mp4",
+      "industry": "包装行业",
+      "size": 287360848,
+      "mtime": "2026-01-11T06:32:20.000Z",
+      "status": "IN_FEISHU_BRIEF",
+      "action": "RE_ANALYZE",
+      "mainRecordId": "recvufiFMaIUVo",
+      "shotCount": 12,
+      "assessment": {
+        "quality": "BRIEF",
+        "score": 30,
+        "issues": [
+          "missing_cover=12",
+          "missing_dur_label=12"
+        ],
+        "avgDesc": 116,
+        "hasCover": 0,
+        "hasDurationLabel": 0,
+        "timeStampValid": 12
+      }
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/包装行业/RPG-祥英.mp4",
+      "relPath": "包装行业/RPG-祥英.mp4",
+      "fileName": "RPG-祥英.mp4",
+      "industry": "包装行业",
+      "size": 408425711,
+      "mtime": "2025-10-31T10:24:10.000Z",
+      "status": "IN_FEISHU_NO_SHOTS",
+      "action": "RE_ANALYZE",
+      "mainRecordId": "recvufj1IF86Qx",
+      "shotCount": 0
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/医药行业/RPG-弘华.mp4",
+      "relPath": "医药行业/RPG-弘华.mp4",
+      "fileName": "RPG-弘华.mp4",
+      "industry": "医药行业",
+      "size": 199943940,
+      "mtime": "2026-02-01T01:30:20.000Z",
+      "status": "IN_FEISHU_BRIEF",
+      "action": "RE_ANALYZE",
+      "mainRecordId": "recvufgjqWaNoT",
+      "shotCount": 9,
+      "assessment": {
+        "quality": "BRIEF",
+        "score": 30,
+        "issues": [
+          "missing_cover=9",
+          "missing_dur_label=9"
+        ],
+        "avgDesc": 134,
+        "hasCover": 0,
+        "hasDurationLabel": 0,
+        "timeStampValid": 9
+      }
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/医药行业/RPG-极正.mp4",
+      "relPath": "医药行业/RPG-极正.mp4",
+      "fileName": "RPG-极正.mp4",
+      "industry": "医药行业",
+      "size": 196719024,
+      "mtime": "2026-01-12T05:21:28.000Z",
+      "status": "IN_FEISHU_BRIEF",
+      "action": "RE_ANALYZE",
+      "mainRecordId": "recvufcE9uETJo",
+      "shotCount": 9,
+      "assessment": {
+        "quality": "BRIEF",
+        "score": 30,
+        "issues": [
+          "missing_cover=9",
+          "missing_dur_label=9"
+        ],
+        "avgDesc": 107,
+        "hasCover": 0,
+        "hasDurationLabel": 0,
+        "timeStampValid": 9
+      }
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/印刷行业/RPG-新华.mp4",
+      "relPath": "印刷行业/RPG-新华.mp4",
+      "fileName": "RPG-新华.mp4",
+      "industry": "印刷行业",
+      "size": 125321948,
+      "mtime": "2025-12-19T01:24:08.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/印刷行业/RPG-新春.mp4",
+      "relPath": "印刷行业/RPG-新春.mp4",
+      "fileName": "RPG-新春.mp4",
+      "industry": "印刷行业",
+      "size": 239369236,
+      "mtime": "2026-01-29T10:25:04.000Z",
+      "status": "IN_FEISHU_BRIEF",
+      "action": "RE_ANALYZE",
+      "mainRecordId": "recvufcJwJCxS1",
+      "shotCount": 10,
+      "assessment": {
+        "quality": "BRIEF",
+        "score": 30,
+        "issues": [
+          "missing_cover=10",
+          "missing_dur_label=10"
+        ],
+        "avgDesc": 81,
+        "hasCover": 0,
+        "hasDurationLabel": 0,
+        "timeStampValid": 10
+      }
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/印刷行业/RPG-瑞禾.mp4",
+      "relPath": "印刷行业/RPG-瑞禾.mp4",
+      "fileName": "RPG-瑞禾.mp4",
+      "industry": "印刷行业",
+      "size": 75714466,
+      "mtime": "2026-01-18T12:36:56.000Z",
+      "status": "IN_FEISHU_BRIEF",
+      "action": "RE_ANALYZE",
+      "mainRecordId": "recvufjAdfSelt",
+      "shotCount": 1,
+      "assessment": {
+        "quality": "BRIEF",
+        "score": 30,
+        "issues": [
+          "missing_cover=1",
+          "missing_dur_label=1"
+        ],
+        "avgDesc": 81,
+        "hasCover": 0,
+        "hasDurationLabel": 0,
+        "timeStampValid": 1
+      }
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/塑料化工行业/RPG-力厚.mp4",
+      "relPath": "塑料化工行业/RPG-力厚.mp4",
+      "fileName": "RPG-力厚.mp4",
+      "industry": "塑料化工行业",
+      "size": 832099630,
+      "mtime": "2025-11-16T03:08:56.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/塑料化工行业/RPG-华普.mp4",
+      "relPath": "塑料化工行业/RPG-华普.mp4",
+      "fileName": "RPG-华普.mp4",
+      "industry": "塑料化工行业",
+      "size": 311652095,
+      "mtime": "2026-01-11T06:30:10.000Z",
+      "status": "IN_FEISHU_BRIEF",
+      "action": "RE_ANALYZE",
+      "mainRecordId": "recvufjM5d3wNG",
+      "shotCount": 11,
+      "assessment": {
+        "quality": "BRIEF",
+        "score": 30,
+        "issues": [
+          "missing_cover=11",
+          "missing_dur_label=11"
+        ],
+        "avgDesc": 153,
+        "hasCover": 0,
+        "hasDurationLabel": 0,
+        "timeStampValid": 11
+      }
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/塑料化工行业/RPG-大吉.mp4",
+      "relPath": "塑料化工行业/RPG-大吉.mp4",
+      "fileName": "RPG-大吉.mp4",
+      "industry": "塑料化工行业",
+      "size": 379835253,
+      "mtime": "2025-04-03T15:39:34.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/家具行业/RPG-兰考.mp4",
+      "relPath": "家具行业/RPG-兰考.mp4",
+      "fileName": "RPG-兰考.mp4",
+      "industry": "家具行业",
+      "size": 89520609,
+      "mtime": "2025-12-15T01:16:58.000Z",
+      "status": "IN_FEISHU_BRIEF",
+      "action": "RE_ANALYZE",
+      "mainRecordId": "recvupwuHYMVaO",
+      "shotCount": 25,
+      "assessment": {
+        "quality": "BRIEF",
+        "score": 30,
+        "issues": [
+          "missing_cover=25",
+          "missing_dur_label=25"
+        ],
+        "avgDesc": 70,
+        "hasCover": 0,
+        "hasDurationLabel": 0,
+        "timeStampValid": 25
+      }
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/家具行业/RPG-凤莲.mp4",
+      "relPath": "家具行业/RPG-凤莲.mp4",
+      "fileName": "RPG-凤莲.mp4",
+      "industry": "家具行业",
+      "size": 343384526,
+      "mtime": "2025-06-17T01:33:06.000Z",
+      "status": "IN_FEISHU_BRIEF",
+      "action": "RE_ANALYZE",
+      "mainRecordId": "recvupBXvrrJNw",
+      "shotCount": 11,
+      "assessment": {
+        "quality": "BRIEF",
+        "score": 30,
+        "issues": [
+          "missing_cover=11",
+          "missing_dur_label=11"
+        ],
+        "avgDesc": 176,
+        "hasCover": 0,
+        "hasDurationLabel": 0,
+        "timeStampValid": 11
+      }
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/家具行业/RPG-森鑫.mp4",
+      "relPath": "家具行业/RPG-森鑫.mp4",
+      "fileName": "RPG-森鑫.mp4",
+      "industry": "家具行业",
+      "size": 319740237,
+      "mtime": "2026-02-01T01:25:38.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/家电行业/RPG-信华.mp4",
+      "relPath": "家电行业/RPG-信华.mp4",
+      "fileName": "RPG-信华.mp4",
+      "industry": "家电行业",
+      "size": 358354061,
+      "mtime": "2025-12-30T03:29:30.000Z",
+      "status": "IN_FEISHU_BRIEF",
+      "action": "RE_ANALYZE",
+      "mainRecordId": "recvufkYgchkt7",
+      "shotCount": 19,
+      "assessment": {
+        "quality": "BRIEF",
+        "score": 30,
+        "issues": [
+          "missing_cover=19",
+          "missing_dur_label=19"
+        ],
+        "avgDesc": 78,
+        "hasCover": 0,
+        "hasDurationLabel": 0,
+        "timeStampValid": 19
+      }
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/家电行业/RPG-志高.mp4",
+      "relPath": "家电行业/RPG-志高.mp4",
+      "fileName": "RPG-志高.mp4",
+      "industry": "家电行业",
+      "size": 178038955,
+      "mtime": "2025-12-03T11:07:28.000Z",
+      "status": "IN_FEISHU_BRIEF",
+      "action": "RE_ANALYZE",
+      "mainRecordId": "recvufkO7XayXB",
+      "shotCount": 6,
+      "assessment": {
+        "quality": "BRIEF",
+        "score": 30,
+        "issues": [
+          "missing_cover=6",
+          "missing_dur_label=6"
+        ],
+        "avgDesc": 158,
+        "hasCover": 0,
+        "hasDurationLabel": 0,
+        "timeStampValid": 6
+      }
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/家电行业/RPG-浩特.mp4",
+      "relPath": "家电行业/RPG-浩特.mp4",
+      "fileName": "RPG-浩特.mp4",
+      "industry": "家电行业",
+      "size": 265868272,
+      "mtime": "2025-12-22T06:05:32.000Z",
+      "status": "IN_FEISHU_BRIEF",
+      "action": "RE_ANALYZE",
+      "mainRecordId": "recvuflNPNR9Uw",
+      "shotCount": 8,
+      "assessment": {
+        "quality": "BRIEF",
+        "score": 30,
+        "issues": [
+          "missing_cover=8",
+          "missing_dur_label=8"
+        ],
+        "avgDesc": 138,
+        "hasCover": 0,
+        "hasDurationLabel": 0,
+        "timeStampValid": 8
+      }
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/家电行业/RPG-艾诺.mp4",
+      "relPath": "家电行业/RPG-艾诺.mp4",
+      "fileName": "RPG-艾诺.mp4",
+      "industry": "家电行业",
+      "size": 334623090,
+      "mtime": "2025-12-29T02:09:58.000Z",
+      "status": "IN_FEISHU_BRIEF",
+      "action": "RE_ANALYZE",
+      "mainRecordId": "recvufm38bj0OH",
+      "shotCount": 13,
+      "assessment": {
+        "quality": "BRIEF",
+        "score": 30,
+        "issues": [
+          "missing_cover=13",
+          "missing_dur_label=13"
+        ],
+        "avgDesc": 93,
+        "hasCover": 0,
+        "hasDurationLabel": 0,
+        "timeStampValid": 13
+      }
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/家电行业/RPG-金品创业.mp4",
+      "relPath": "家电行业/RPG-金品创业.mp4",
+      "fileName": "RPG-金品创业.mp4",
+      "industry": "家电行业",
+      "size": 149311696,
+      "mtime": "2026-01-27T01:40:52.000Z",
+      "status": "IN_FEISHU_BRIEF",
+      "action": "RE_ANALYZE",
+      "mainRecordId": "recvufmjsjbJfG",
+      "shotCount": 26,
+      "assessment": {
+        "quality": "BRIEF",
+        "score": 30,
+        "issues": [
+          "missing_cover=26",
+          "missing_dur_label=26"
+        ],
+        "avgDesc": 143,
+        "hasCover": 0,
+        "hasDurationLabel": 0,
+        "timeStampValid": 26
+      }
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/家电行业/RPG-铁牛.mp4",
+      "relPath": "家电行业/RPG-铁牛.mp4",
+      "fileName": "RPG-铁牛.mp4",
+      "industry": "家电行业",
+      "size": 121704147,
+      "mtime": "2025-12-13T04:20:48.000Z",
+      "status": "IN_FEISHU_BRIEF",
+      "action": "RE_ANALYZE",
+      "mainRecordId": "recvufmPVl8f1v",
+      "shotCount": 12,
+      "assessment": {
+        "quality": "BRIEF",
+        "score": 30,
+        "issues": [
+          "missing_cover=12",
+          "missing_dur_label=12"
+        ],
+        "avgDesc": 172,
+        "hasCover": 0,
+        "hasDurationLabel": 0,
+        "timeStampValid": 12
+      }
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/新材料新能源行业/RPG-中能.mp4",
+      "relPath": "新材料新能源行业/RPG-中能.mp4",
+      "fileName": "RPG-中能.mp4",
+      "industry": "新材料新能源行业",
+      "size": 525670830,
+      "mtime": "2025-04-15T12:14:10.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/新材料新能源行业/RPG-力拓.mp4",
+      "relPath": "新材料新能源行业/RPG-力拓.mp4",
+      "fileName": "RPG-力拓.mp4",
+      "industry": "新材料新能源行业",
+      "size": 27326079,
+      "mtime": "2025-12-06T10:25:42.000Z",
+      "status": "IN_FEISHU_BRIEF",
+      "action": "RE_ANALYZE",
+      "mainRecordId": "recvufndrdUMSZ",
+      "shotCount": 10,
+      "assessment": {
+        "quality": "BRIEF",
+        "score": 30,
+        "issues": [
+          "missing_cover=10",
+          "missing_dur_label=10"
+        ],
+        "avgDesc": 154,
+        "hasCover": 0,
+        "hasDurationLabel": 0,
+        "timeStampValid": 10
+      }
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/新材料新能源行业/RPG-华娇.mp4",
+      "relPath": "新材料新能源行业/RPG-华娇.mp4",
+      "fileName": "RPG-华娇.mp4",
+      "industry": "新材料新能源行业",
+      "size": 288966118,
+      "mtime": "2025-12-10T00:55:32.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/新材料新能源行业/RPG-国轩.mp4",
+      "relPath": "新材料新能源行业/RPG-国轩.mp4",
+      "fileName": "RPG-国轩.mp4",
+      "industry": "新材料新能源行业",
+      "size": 218501841,
+      "mtime": "2025-12-20T02:59:24.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/新材料新能源行业/RPG-圣泉.mp4",
+      "relPath": "新材料新能源行业/RPG-圣泉.mp4",
+      "fileName": "RPG-圣泉.mp4",
+      "industry": "新材料新能源行业",
+      "size": 329765720,
+      "mtime": "2026-01-07T01:13:32.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/新材料新能源行业/RPG-圣龙.mp4",
+      "relPath": "新材料新能源行业/RPG-圣龙.mp4",
+      "fileName": "RPG-圣龙.mp4",
+      "industry": "新材料新能源行业",
+      "size": 145842176,
+      "mtime": "2026-01-09T13:15:18.000Z",
+      "status": "IN_FEISHU_BRIEF",
+      "action": "RE_ANALYZE",
+      "mainRecordId": "recvupIhboefp5",
+      "shotCount": 14,
+      "assessment": {
+        "quality": "BRIEF",
+        "score": 30,
+        "issues": [
+          "missing_cover=14",
+          "missing_dur_label=14"
+        ],
+        "avgDesc": 103,
+        "hasCover": 0,
+        "hasDurationLabel": 0,
+        "timeStampValid": 14
+      }
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/新材料新能源行业/RPG-康成.mp4",
+      "relPath": "新材料新能源行业/RPG-康成.mp4",
+      "fileName": "RPG-康成.mp4",
+      "industry": "新材料新能源行业",
+      "size": 155977309,
+      "mtime": "2025-11-29T04:53:28.000Z",
+      "status": "IN_FEISHU_BRIEF",
+      "action": "RE_ANALYZE",
+      "mainRecordId": "recvupImCCz7z9",
+      "shotCount": 12,
+      "assessment": {
+        "quality": "BRIEF",
+        "score": 30,
+        "issues": [
+          "missing_cover=12",
+          "missing_dur_label=12"
+        ],
+        "avgDesc": 100,
+        "hasCover": 0,
+        "hasDurationLabel": 0,
+        "timeStampValid": 12
+      }
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/新材料新能源行业/RPG-德晋.mp4",
+      "relPath": "新材料新能源行业/RPG-德晋.mp4",
+      "fileName": "RPG-德晋.mp4",
+      "industry": "新材料新能源行业",
+      "size": 351182079,
+      "mtime": "2025-12-29T02:04:16.000Z",
+      "status": "IN_FEISHU_BRIEF",
+      "action": "RE_ANALYZE",
+      "mainRecordId": "recvupJfwiylHa",
+      "shotCount": 11,
+      "assessment": {
+        "quality": "BRIEF",
+        "score": 30,
+        "issues": [
+          "missing_cover=11",
+          "missing_dur_label=11"
+        ],
+        "avgDesc": 156,
+        "hasCover": 0,
+        "hasDurationLabel": 0,
+        "timeStampValid": 11
+      }
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/新材料新能源行业/RPG-海达.mp4",
+      "relPath": "新材料新能源行业/RPG-海达.mp4",
+      "fileName": "RPG-海达.mp4",
+      "industry": "新材料新能源行业",
+      "size": 237748524,
+      "mtime": "2025-12-04T07:04:22.000Z",
+      "status": "IN_FEISHU_BRIEF",
+      "action": "RE_ANALYZE",
+      "mainRecordId": "recvupK1ZSugbA",
+      "shotCount": 13,
+      "assessment": {
+        "quality": "BRIEF",
+        "score": 30,
+        "issues": [
+          "missing_cover=13",
+          "missing_dur_label=13"
+        ],
+        "avgDesc": 84,
+        "hasCover": 0,
+        "hasDurationLabel": 0,
+        "timeStampValid": 13
+      }
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/新材料新能源行业/RPG-超俊.mp4",
+      "relPath": "新材料新能源行业/RPG-超俊.mp4",
+      "fileName": "RPG-超俊.mp4",
+      "industry": "新材料新能源行业",
+      "size": 290626274,
+      "mtime": "2025-12-17T03:30:54.000Z",
+      "status": "IN_FEISHU_BRIEF",
+      "action": "RE_ANALYZE",
+      "mainRecordId": "recvupJYlnAzgz",
+      "shotCount": 11,
+      "assessment": {
+        "quality": "BRIEF",
+        "score": 30,
+        "issues": [
+          "missing_cover=11",
+          "missing_dur_label=11"
+        ],
+        "avgDesc": 112,
+        "hasCover": 0,
+        "hasDurationLabel": 0,
+        "timeStampValid": 11
+      }
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/新材料新能源行业/RPG-金玉米.mp4",
+      "relPath": "新材料新能源行业/RPG-金玉米.mp4",
+      "fileName": "RPG-金玉米.mp4",
+      "industry": "新材料新能源行业",
+      "size": 119662512,
+      "mtime": "2025-12-18T06:10:30.000Z",
+      "status": "IN_FEISHU_BRIEF",
+      "action": "RE_ANALYZE",
+      "mainRecordId": "recvupKD7K0jXl",
+      "shotCount": 8,
+      "assessment": {
+        "quality": "BRIEF",
+        "score": 30,
+        "issues": [
+          "missing_cover=8",
+          "missing_dur_label=8"
+        ],
+        "avgDesc": 144,
+        "hasCover": 0,
+        "hasDurationLabel": 0,
+        "timeStampValid": 8
+      }
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/新材料新能源行业/RPG-集盛.mp4",
+      "relPath": "新材料新能源行业/RPG-集盛.mp4",
+      "fileName": "RPG-集盛.mp4",
+      "industry": "新材料新能源行业",
+      "size": 119550349,
+      "mtime": "2026-01-08T10:10:26.000Z",
+      "status": "IN_FEISHU_BRIEF",
+      "action": "RE_ANALYZE",
+      "mainRecordId": "recvupLc4uT02v",
+      "shotCount": 8,
+      "assessment": {
+        "quality": "BRIEF",
+        "score": 30,
+        "issues": [
+          "missing_cover=8",
+          "missing_dur_label=8"
+        ],
+        "avgDesc": 151,
+        "hasCover": 0,
+        "hasDurationLabel": 0,
+        "timeStampValid": 8
+      }
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/机械制造业/RPG-东风模具.mp4",
+      "relPath": "机械制造业/RPG-东风模具.mp4",
+      "fileName": "RPG-东风模具.mp4",
+      "industry": "机械制造业",
+      "size": 334413952,
+      "mtime": "2026-01-17T10:24:08.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/机械制造业/RPG-义拉.mp4",
+      "relPath": "机械制造业/RPG-义拉.mp4",
+      "fileName": "RPG-义拉.mp4",
+      "industry": "机械制造业",
+      "size": 334630775,
+      "mtime": "2025-11-30T04:14:52.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/机械制造业/RPG-京华.mp4",
+      "relPath": "机械制造业/RPG-京华.mp4",
+      "fileName": "RPG-京华.mp4",
+      "industry": "机械制造业",
+      "size": 235906377,
+      "mtime": "2026-02-01T01:32:18.000Z",
+      "status": "IN_FEISHU_BRIEF",
+      "action": "RE_ANALYZE",
+      "mainRecordId": "recvupMDTYfdP5",
+      "shotCount": 6,
+      "assessment": {
+        "quality": "BRIEF",
+        "score": 30,
+        "issues": [
+          "missing_cover=6",
+          "missing_dur_label=6"
+        ],
+        "avgDesc": 139,
+        "hasCover": 0,
+        "hasDurationLabel": 0,
+        "timeStampValid": 6
+      }
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/机械制造业/RPG-众业达.mp4",
+      "relPath": "机械制造业/RPG-众业达.mp4",
+      "fileName": "RPG-众业达.mp4",
+      "industry": "机械制造业",
+      "size": 240756530,
+      "mtime": "2025-12-12T07:39:52.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/机械制造业/RPG-优图.mp4",
+      "relPath": "机械制造业/RPG-优图.mp4",
+      "fileName": "RPG-优图.mp4",
+      "industry": "机械制造业",
+      "size": 129580453,
+      "mtime": "2026-01-28T03:33:12.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/机械制造业/RPG-依必安.mp4",
+      "relPath": "机械制造业/RPG-依必安.mp4",
+      "fileName": "RPG-依必安.mp4",
+      "industry": "机械制造业",
+      "size": 96233737,
+      "mtime": "2026-01-17T09:38:52.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/机械制造业/RPG-南翔.mp4",
+      "relPath": "机械制造业/RPG-南翔.mp4",
+      "fileName": "RPG-南翔.mp4",
+      "industry": "机械制造业",
+      "size": 145403995,
+      "mtime": "2025-12-29T01:53:16.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/机械制造业/RPG-博特.mp4",
+      "relPath": "机械制造业/RPG-博特.mp4",
+      "fileName": "RPG-博特.mp4",
+      "industry": "机械制造业",
+      "size": 152986884,
+      "mtime": "2025-12-15T13:06:02.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/机械制造业/RPG-博阳.mp4",
+      "relPath": "机械制造业/RPG-博阳.mp4",
+      "fileName": "RPG-博阳.mp4",
+      "industry": "机械制造业",
+      "size": 140116631,
+      "mtime": "2025-12-31T05:37:24.000Z",
+      "status": "IN_FEISHU_BRIEF",
+      "action": "RE_ANALYZE",
+      "mainRecordId": "recvuqfHodHvN0",
+      "shotCount": 9,
+      "assessment": {
+        "quality": "BRIEF",
+        "score": 30,
+        "issues": [
+          "missing_cover=9",
+          "missing_dur_label=9"
+        ],
+        "avgDesc": 71,
+        "hasCover": 0,
+        "hasDurationLabel": 0,
+        "timeStampValid": 9
+      }
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/机械制造业/RPG-卧龙.mp4",
+      "relPath": "机械制造业/RPG-卧龙.mp4",
+      "fileName": "RPG-卧龙.mp4",
+      "industry": "机械制造业",
+      "size": 16080391,
+      "mtime": "2026-02-02T01:56:18.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/机械制造业/RPG-嘉瑞.mp4",
+      "relPath": "机械制造业/RPG-嘉瑞.mp4",
+      "fileName": "RPG-嘉瑞.mp4",
+      "industry": "机械制造业",
+      "size": 162597726,
+      "mtime": "2025-12-25T08:35:40.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/机械制造业/RPG-多特.mp4",
+      "relPath": "机械制造业/RPG-多特.mp4",
+      "fileName": "RPG-多特.mp4",
+      "industry": "机械制造业",
+      "size": 102434511,
+      "mtime": "2025-12-30T01:21:00.000Z",
+      "status": "IN_FEISHU_BRIEF",
+      "action": "RE_ANALYZE",
+      "mainRecordId": "recvuqkgbet3BD",
+      "shotCount": 8,
+      "assessment": {
+        "quality": "BRIEF",
+        "score": 30,
+        "issues": [
+          "missing_cover=8",
+          "missing_dur_label=8"
+        ],
+        "avgDesc": 105,
+        "hasCover": 0,
+        "hasDurationLabel": 0,
+        "timeStampValid": 8
+      }
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/机械制造业/RPG-安来.mp4",
+      "relPath": "机械制造业/RPG-安来.mp4",
+      "fileName": "RPG-安来.mp4",
+      "industry": "机械制造业",
+      "size": 112476257,
+      "mtime": "2026-01-07T01:15:54.000Z",
+      "status": "IN_FEISHU_BRIEF",
+      "action": "RE_ANALYZE",
+      "mainRecordId": "recvuqkQzOWoed",
+      "shotCount": 11,
+      "assessment": {
+        "quality": "BRIEF",
+        "score": 30,
+        "issues": [
+          "missing_cover=11",
+          "missing_dur_label=11"
+        ],
+        "avgDesc": 137,
+        "hasCover": 0,
+        "hasDurationLabel": 0,
+        "timeStampValid": 11
+      }
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/机械制造业/RPG-晓诚.mp4",
+      "relPath": "机械制造业/RPG-晓诚.mp4",
+      "fileName": "RPG-晓诚.mp4",
+      "industry": "机械制造业",
+      "size": 338657700,
+      "mtime": "2025-06-17T01:40:36.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/机械制造业/RPG-普洛斯.mp4",
+      "relPath": "机械制造业/RPG-普洛斯.mp4",
+      "fileName": "RPG-普洛斯.mp4",
+      "industry": "机械制造业",
+      "size": 108154891,
+      "mtime": "2025-12-30T01:34:48.000Z",
+      "status": "IN_FEISHU_BRIEF",
+      "action": "RE_ANALYZE",
+      "mainRecordId": "recvuqu8fRwSUC",
+      "shotCount": 16,
+      "assessment": {
+        "quality": "BRIEF",
+        "score": 30,
+        "issues": [
+          "missing_cover=16",
+          "missing_dur_label=16"
+        ],
+        "avgDesc": 120,
+        "hasCover": 0,
+        "hasDurationLabel": 0,
+        "timeStampValid": 16
+      }
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/机械制造业/RPG-番禺电缆.mp4",
+      "relPath": "机械制造业/RPG-番禺电缆.mp4",
+      "fileName": "RPG-番禺电缆.mp4",
+      "industry": "机械制造业",
+      "size": 341267157,
+      "mtime": "2025-12-11T07:20:58.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/机械制造业/RPG-登升.mp4",
+      "relPath": "机械制造业/RPG-登升.mp4",
+      "fileName": "RPG-登升.mp4",
+      "industry": "机械制造业",
+      "size": 128669947,
+      "mtime": "2025-12-17T02:05:00.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/机械制造业/RPG-白马.mp4",
+      "relPath": "机械制造业/RPG-白马.mp4",
+      "fileName": "RPG-白马.mp4",
+      "industry": "机械制造业",
+      "size": 207034537,
+      "mtime": "2026-01-30T09:10:42.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/机械制造业/RPG-航特.mp4",
+      "relPath": "机械制造业/RPG-航特.mp4",
+      "fileName": "RPG-航特.mp4",
+      "industry": "机械制造业",
+      "size": 151658954,
+      "mtime": "2025-12-05T15:49:52.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/机械制造业/RPG-荏原.mp4",
+      "relPath": "机械制造业/RPG-荏原.mp4",
+      "fileName": "RPG-荏原.mp4",
+      "industry": "机械制造业",
+      "size": 143944839,
+      "mtime": "2026-01-29T10:20:12.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/机械制造业/RPG-金升.mp4",
+      "relPath": "机械制造业/RPG-金升.mp4",
+      "fileName": "RPG-金升.mp4",
+      "industry": "机械制造业",
+      "size": 125461842,
+      "mtime": "2026-01-29T12:40:08.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/机械制造业/RPG-金正达.mp4",
+      "relPath": "机械制造业/RPG-金正达.mp4",
+      "fileName": "RPG-金正达.mp4",
+      "industry": "机械制造业",
+      "size": 282062103,
+      "mtime": "2025-12-30T01:17:30.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/机械制造业/RPG-铂尚.mp4",
+      "relPath": "机械制造业/RPG-铂尚.mp4",
+      "fileName": "RPG-铂尚.mp4",
+      "industry": "机械制造业",
+      "size": 290348571,
+      "mtime": "2025-11-28T01:27:32.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/汽车零部件行业/RPG-东实底盘.mp4",
+      "relPath": "汽车零部件行业/RPG-东实底盘.mp4",
+      "fileName": "RPG-东实底盘.mp4",
+      "industry": "汽车零部件行业",
+      "size": 258907667,
+      "mtime": "2026-01-11T06:28:26.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/汽车零部件行业/RPG-东风.mp4",
+      "relPath": "汽车零部件行业/RPG-东风.mp4",
+      "fileName": "RPG-东风.mp4",
+      "industry": "汽车零部件行业",
+      "size": 306776231,
+      "mtime": "2025-11-26T01:35:44.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/汽车零部件行业/RPG-中泰.mp4",
+      "relPath": "汽车零部件行业/RPG-中泰.mp4",
+      "fileName": "RPG-中泰.mp4",
+      "industry": "汽车零部件行业",
+      "size": 407944072,
+      "mtime": "2026-01-20T13:54:24.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/汽车零部件行业/RPG-威孚力达.mp4",
+      "relPath": "汽车零部件行业/RPG-威孚力达.mp4",
+      "fileName": "RPG-威孚力达.mp4",
+      "industry": "汽车零部件行业",
+      "size": 152786650,
+      "mtime": "2025-12-05T12:06:40.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/汽车零部件行业/RPG-常州恒勃.mp4",
+      "relPath": "汽车零部件行业/RPG-常州恒勃.mp4",
+      "fileName": "RPG-常州恒勃.mp4",
+      "industry": "汽车零部件行业",
+      "size": 380733998,
+      "mtime": "2025-04-03T14:58:48.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/汽车零部件行业/RPG-恒勃.mp4",
+      "relPath": "汽车零部件行业/RPG-恒勃.mp4",
+      "fileName": "RPG-恒勃.mp4",
+      "industry": "汽车零部件行业",
+      "size": 254073891,
+      "mtime": "2025-10-26T05:45:10.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/汽车零部件行业/RPG-易实.mp4",
+      "relPath": "汽车零部件行业/RPG-易实.mp4",
+      "fileName": "RPG-易实.mp4",
+      "industry": "汽车零部件行业",
+      "size": 218181605,
+      "mtime": "2026-01-17T09:27:14.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/汽车零部件行业/RPG-海纳川.mp4",
+      "relPath": "汽车零部件行业/RPG-海纳川.mp4",
+      "fileName": "RPG-海纳川.mp4",
+      "industry": "汽车零部件行业",
+      "size": 214209582,
+      "mtime": "2026-01-09T11:17:04.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/汽车零部件行业/RPG-萨克斯.mp4",
+      "relPath": "汽车零部件行业/RPG-萨克斯.mp4",
+      "fileName": "RPG-萨克斯.mp4",
+      "industry": "汽车零部件行业",
+      "size": 195341639,
+      "mtime": "2026-01-08T01:16:40.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/汽车零部件行业/RPG-西格迈.mp4",
+      "relPath": "汽车零部件行业/RPG-西格迈.mp4",
+      "fileName": "RPG-西格迈.mp4",
+      "industry": "汽车零部件行业",
+      "size": 335610458,
+      "mtime": "2025-12-05T05:38:58.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/物流行业/RPG-中通.mp4",
+      "relPath": "物流行业/RPG-中通.mp4",
+      "fileName": "RPG-中通.mp4",
+      "industry": "物流行业",
+      "size": 120769351,
+      "mtime": "2026-01-17T09:25:18.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/物流行业/RPG-交控.mp4",
+      "relPath": "物流行业/RPG-交控.mp4",
+      "fileName": "RPG-交控.mp4",
+      "industry": "物流行业",
+      "size": 101915289,
+      "mtime": "2025-12-10T10:16:14.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/物流行业/RPG-京东.mp4",
+      "relPath": "物流行业/RPG-京东.mp4",
+      "fileName": "RPG-京东.mp4",
+      "industry": "物流行业",
+      "size": 146767895,
+      "mtime": "2025-12-22T08:27:12.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/物流行业/RPG-华东.mp4",
+      "relPath": "物流行业/RPG-华东.mp4",
+      "fileName": "RPG-华东.mp4",
+      "industry": "物流行业",
+      "size": 144541745,
+      "mtime": "2026-01-09T11:20:56.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/物流行业/RPG-嘉荣.mp4",
+      "relPath": "物流行业/RPG-嘉荣.mp4",
+      "fileName": "RPG-嘉荣.mp4",
+      "industry": "物流行业",
+      "size": 165760149,
+      "mtime": "2026-01-14T14:07:54.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/物流行业/RPG-昌明.mp4",
+      "relPath": "物流行业/RPG-昌明.mp4",
+      "fileName": "RPG-昌明.mp4",
+      "industry": "物流行业",
+      "size": 68962055,
+      "mtime": "2025-12-06T10:26:58.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/物流行业/RPG-比狮.mp4",
+      "relPath": "物流行业/RPG-比狮.mp4",
+      "fileName": "RPG-比狮.mp4",
+      "industry": "物流行业",
+      "size": 254150108,
+      "mtime": "2025-12-15T13:35:26.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/物流行业/RPG-蜀海.mp4",
+      "relPath": "物流行业/RPG-蜀海.mp4",
+      "fileName": "RPG-蜀海.mp4",
+      "industry": "物流行业",
+      "size": 47092199,
+      "mtime": "2026-01-22T02:32:28.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/物流行业/RPG-跨境.mp4",
+      "relPath": "物流行业/RPG-跨境.mp4",
+      "fileName": "RPG-跨境.mp4",
+      "industry": "物流行业",
+      "size": 122613544,
+      "mtime": "2025-12-13T04:26:10.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/物流行业/RPG-雅利.mp4",
+      "relPath": "物流行业/RPG-雅利.mp4",
+      "fileName": "RPG-雅利.mp4",
+      "industry": "物流行业",
+      "size": 96710115,
+      "mtime": "2026-01-14T11:20:30.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/物流行业/RPG-龙城进出口.mp4",
+      "relPath": "物流行业/RPG-龙城进出口.mp4",
+      "fileName": "RPG-龙城进出口.mp4",
+      "industry": "物流行业",
+      "size": 247702205,
+      "mtime": "2025-12-30T01:22:28.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/瓷器行业/RPG-利峰.mp4",
+      "relPath": "瓷器行业/RPG-利峰.mp4",
+      "fileName": "RPG-利峰.mp4",
+      "industry": "瓷器行业",
+      "size": 152277589,
+      "mtime": "2025-11-28T01:26:10.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/瓷器行业/RPG-唐山高压.mp4",
+      "relPath": "瓷器行业/RPG-唐山高压.mp4",
+      "fileName": "RPG-唐山高压.mp4",
+      "industry": "瓷器行业",
+      "size": 103630531,
+      "mtime": "2025-12-08T08:05:30.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/纺织行业/RPG-佳硕.mp4",
+      "relPath": "纺织行业/RPG-佳硕.mp4",
+      "fileName": "RPG-佳硕.mp4",
+      "industry": "纺织行业",
+      "size": 172503785,
+      "mtime": "2025-12-11T07:52:26.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/纺织行业/RPG-安益.mp4",
+      "relPath": "纺织行业/RPG-安益.mp4",
+      "fileName": "RPG-安益.mp4",
+      "industry": "纺织行业",
+      "size": 210461457,
+      "mtime": "2025-12-27T02:23:38.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/纺织行业/RPG-航港.mp4",
+      "relPath": "纺织行业/RPG-航港.mp4",
+      "fileName": "RPG-航港.mp4",
+      "industry": "纺织行业",
+      "size": 121208524,
+      "mtime": "2025-12-30T10:12:38.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/纺织行业/RPG-隆祎.mp4",
+      "relPath": "纺织行业/RPG-隆祎.mp4",
+      "fileName": "RPG-隆祎.mp4",
+      "industry": "纺织行业",
+      "size": 35590137,
+      "mtime": "2026-01-31T02:18:30.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/造纸行业/RPG-亿丰.mp4",
+      "relPath": "造纸行业/RPG-亿丰.mp4",
+      "fileName": "RPG-亿丰.mp4",
+      "industry": "造纸行业",
+      "size": 201263709,
+      "mtime": "2026-01-07T10:03:04.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/造纸行业/RPG-佳和.mp4",
+      "relPath": "造纸行业/RPG-佳和.mp4",
+      "fileName": "RPG-佳和.mp4",
+      "industry": "造纸行业",
+      "size": 139664554,
+      "mtime": "2026-01-27T09:52:20.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/造纸行业/RPG-宏强.mp4",
+      "relPath": "造纸行业/RPG-宏强.mp4",
+      "fileName": "RPG-宏强.mp4",
+      "industry": "造纸行业",
+      "size": 172542722,
+      "mtime": "2025-12-18T01:12:10.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/造纸行业/RPG-永运.mp4",
+      "relPath": "造纸行业/RPG-永运.mp4",
+      "fileName": "RPG-永运.mp4",
+      "industry": "造纸行业",
+      "size": 288919466,
+      "mtime": "2025-10-26T05:55:46.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/造纸行业/RPG-维达.mp4",
+      "relPath": "造纸行业/RPG-维达.mp4",
+      "fileName": "RPG-维达.mp4",
+      "industry": "造纸行业",
+      "size": 118775359,
+      "mtime": "2025-11-29T09:38:44.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/造纸行业/RPG-鼎丰.mp4",
+      "relPath": "造纸行业/RPG-鼎丰.mp4",
+      "fileName": "RPG-鼎丰.mp4",
+      "industry": "造纸行业",
+      "size": 71175924,
+      "mtime": "2026-01-18T12:38:06.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/造纸行业/RPG-龙派.mp4",
+      "relPath": "造纸行业/RPG-龙派.mp4",
+      "fileName": "RPG-龙派.mp4",
+      "industry": "造纸行业",
+      "size": 237434107,
+      "mtime": "2025-12-18T01:11:16.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/食品饮料行业/RPG-伟龙.mp4",
+      "relPath": "食品饮料行业/RPG-伟龙.mp4",
+      "fileName": "RPG-伟龙.mp4",
+      "industry": "食品饮料行业",
+      "size": 328774677,
+      "mtime": "2025-12-04T14:47:16.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/食品饮料行业/RPG-凤梨.mp4",
+      "relPath": "食品饮料行业/RPG-凤梨.mp4",
+      "fileName": "RPG-凤梨.mp4",
+      "industry": "食品饮料行业",
+      "size": 337868436,
+      "mtime": "2025-12-20T03:25:28.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/食品饮料行业/RPG-天祥.mp4",
+      "relPath": "食品饮料行业/RPG-天祥.mp4",
+      "fileName": "RPG-天祥.mp4",
+      "industry": "食品饮料行业",
+      "size": 213403903,
+      "mtime": "2025-11-26T01:37:46.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/食品饮料行业/RPG-奇达.mp4",
+      "relPath": "食品饮料行业/RPG-奇达.mp4",
+      "fileName": "RPG-奇达.mp4",
+      "industry": "食品饮料行业",
+      "size": 119550349,
+      "mtime": "2026-01-08T10:10:26.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/食品饮料行业/RPG-巨香.mp4",
+      "relPath": "食品饮料行业/RPG-巨香.mp4",
+      "fileName": "RPG-巨香.mp4",
+      "industry": "食品饮料行业",
+      "size": 282990876,
+      "mtime": "2025-11-28T08:34:42.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/食品饮料行业/RPG-怡宝.mp4",
+      "relPath": "食品饮料行业/RPG-怡宝.mp4",
+      "fileName": "RPG-怡宝.mp4",
+      "industry": "食品饮料行业",
+      "size": 301104053,
+      "mtime": "2025-12-24T01:16:06.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/食品饮料行业/RPG-欢乐家.mp4",
+      "relPath": "食品饮料行业/RPG-欢乐家.mp4",
+      "fileName": "RPG-欢乐家.mp4",
+      "industry": "食品饮料行业",
+      "size": 21751509,
+      "mtime": "2026-01-26T01:13:02.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/食品饮料行业/RPG-潮力.mp4",
+      "relPath": "食品饮料行业/RPG-潮力.mp4",
+      "fileName": "RPG-潮力.mp4",
+      "industry": "食品饮料行业",
+      "size": 273500861,
+      "mtime": "2025-12-05T05:35:58.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/食品饮料行业/RPG-美益.mp4",
+      "relPath": "食品饮料行业/RPG-美益.mp4",
+      "fileName": "RPG-美益.mp4",
+      "industry": "食品饮料行业",
+      "size": 153459864,
+      "mtime": "2025-12-05T15:51:48.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    },
+    {
+      "path": "/Users/jensen/Desktop/自动搬运车/食品饮料行业/RPG-菲诺.mp4",
+      "relPath": "食品饮料行业/RPG-菲诺.mp4",
+      "fileName": "RPG-菲诺.mp4",
+      "industry": "食品饮料行业",
+      "size": 129733450,
+      "mtime": "2025-12-22T01:07:20.000Z",
+      "status": "NOT_IN_FEISHU",
+      "action": "UPLOAD_AND_ANALYZE"
+    }
+  ]
+}

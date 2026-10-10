@@ -1,0 +1,1 @@
+ALTER TABLE "materials" ADD COLUMN "file_hash" varchar(64);

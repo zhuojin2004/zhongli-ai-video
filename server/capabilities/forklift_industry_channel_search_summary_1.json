@@ -1,0 +1,20 @@
+{
+  "id": "forklift_industry_channel_search_summary_1",
+  "pluginKey": "@official-plugins/ai-search-summary",
+  "pluginVersion": "1.0.13",
+  "name": "叉车行业视频号数据搜索",
+  "description": "",
+  "icon": "",
+  "paramsSchema": {
+    "required": [],
+    "type": "object",
+    "properties": {}
+  },
+  "formValue": {
+    "query": "中力老潘 老何说叉车 视频号 最新视频数据 标题 播放量 点赞量",
+    "instruction": "请从搜索结果中提取「中力老潘」和「老何说叉车」两个视频号的最新视频相关数据，每条视频需包含标题、发布时间、播放量、点赞量、评论量、转发量等可获取的关键信息，最终以清晰的结构化表格形式返回结果，便于数据对比和分析。"
+  },
+  "createdAt": 1788159351713,
+  "updatedAt": 1788159351713,
+  "createdBy": 7664530520713202977
+}

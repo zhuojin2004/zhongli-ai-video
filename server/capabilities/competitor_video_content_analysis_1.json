@@ -1,0 +1,24 @@
+{
+  "id": "competitor_video_content_analysis_1",
+  "pluginKey": "@official-plugins/ai-search-summary",
+  "pluginVersion": "1.0.13",
+  "name": "竞品视频内容分析",
+  "description": "搜索分析竞品「中力老潘」和「老何说叉车」的最新视频内容、流量数据、内容策略，供驾驶舱竞品监控区块使用",
+  "icon": "",
+  "paramsSchema": {
+    "type": "object",
+    "properties": {
+      "additional_search_requirements": {
+        "type": "string",
+        "description": "附加搜索要求（可选）"
+      }
+    }
+  },
+  "formValue": {
+    "query": "中力老潘 老何说叉车 最新视频内容 流量数据 内容策略",
+    "instruction": "请将搜索到的信息按照以下维度整理：1. 最新发布的视频内容主题、发布时间、发布平台；2. 各视频的播放量、点赞数、评论数、转发数等流量数据；3. 内容运营策略分析，包括内容定位、更新频率、受众群体、互动方式等；4. 重点提炼具有参考价值的运营亮点和差异化优势。输出结构清晰，数据准确，突出关键信息。{{input.additional_search_requirements}}"
+  },
+  "createdAt": 1788144807290,
+  "updatedAt": 1788144807290,
+  "createdBy": 7664530520713202977
+}

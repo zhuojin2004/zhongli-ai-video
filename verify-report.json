@@ -1,0 +1,946 @@
+{
+  "stats": {
+    "total": 104,
+    "hasShots": 8,
+    "shotCountOk": 8,
+    "startTimeOk": 0,
+    "endTimeGtStart": 0,
+    "durationLabelOk": 8,
+    "descLen": 0,
+    "mainLinked": 8,
+    "mainHasDurLabel": 8,
+    "mainHasIndustry": 8,
+    "industry3level": 0
+  },
+  "issues": [
+    {
+      "fileName": "RPG-丰融.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-凯圣兰.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-凯顺.mp4",
+      "problems": [
+        "startTime 不是 number",
+        "endTime <= startTime",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-和泰.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-善源.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-大德玉.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-欧克.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-祥英.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-弘华.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-极正.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-新华.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-新春.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-瑞禾.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-力厚.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-华普.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-大吉.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-兰考.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-凤莲.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-森鑫.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-信华.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-志高.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-浩特.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-艾诺.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-金品创业.mp4",
+      "problems": [
+        "startTime 不是 number",
+        "endTime <= startTime",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-铁牛.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-中能.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-力拓.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-华娇.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-国轩.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-圣泉.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-圣龙.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-康成.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-德晋.mp4",
+      "problems": [
+        "startTime 不是 number",
+        "endTime <= startTime",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-海达.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-超俊.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-金玉米.mp4",
+      "problems": [
+        "startTime 不是 number",
+        "endTime <= startTime",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-集盛.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-东风模具.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-义拉.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-京华.mp4",
+      "problems": [
+        "startTime 不是 number",
+        "endTime <= startTime",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-众业达.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-优图.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-依必安.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-南翔.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-博特.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-博阳.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-卧龙.mp4",
+      "problems": [
+        "startTime 不是 number",
+        "endTime <= startTime",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-嘉瑞.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-多特.mp4",
+      "problems": [
+        "startTime 不是 number",
+        "endTime <= startTime",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-安来.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-晓诚.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-普洛斯.mp4",
+      "problems": [
+        "startTime 不是 number",
+        "endTime <= startTime",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-番禺电缆.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-登升.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-白马.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-航特.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-荏原.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-金升.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-金正达.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-铂尚.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-东实底盘.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-东风.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-中泰.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-威孚力达.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-常州恒勃.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-恒勃.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-易实.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-海纳川.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-萨克斯.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-西格迈.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-中通.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-交控.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-京东.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-华东.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-嘉荣.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-昌明.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-比狮.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-蜀海.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-跨境.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-雅利.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-龙城进出口.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-利峰.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-唐山高压.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-佳硕.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-安益.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-航港.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-隆祎.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-亿丰.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-佳和.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-宏强.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-永运.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-维达.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-鼎丰.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-龙派.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-伟龙.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-凤梨.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-天祥.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-奇达.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-巨香.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-怡宝.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-欢乐家.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-潮力.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-美益.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    },
+    {
+      "fileName": "RPG-菲诺.mp4",
+      "problems": [
+        "无分镜",
+        "MAIN.时长显示 空",
+        "MAIN.行业 空",
+        "行业非 3 级"
+      ]
+    }
+  ],
+  "ts": 1788741683674
+}
