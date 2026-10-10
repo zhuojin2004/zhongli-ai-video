@@ -14,6 +14,7 @@
 const http = require('http')
 const fs = require('fs')
 const path = require('path')
+const os = require('os')
 const { spawn, execFile } = require('child_process')
 const { mkdirSync, existsSync, createWriteStream, unlinkSync, readdirSync, statSync, rmdirSync } = fs
 const Busboy = require('busboy')
@@ -25,6 +26,15 @@ try {
   console.log('[mock-api] DB module loaded');
 } catch (e) {
   console.warn('[mock-api] DB module load failed:', e.message);
+}
+
+// ─── 媒体流水线（FFmpeg 探测 / 抽封面 / 转码，V1）────────────────────────
+let mediaPipeline = null;
+try {
+  mediaPipeline = require('./media-pipeline.js');
+  console.log('[mock-api] media-pipeline loaded');
+} catch (e) {
+  console.warn('[mock-api] media-pipeline load failed:', e.message);
 }
 
 // ─── Env ──────────────────────────────────────────────────────────────────────
@@ -44,7 +54,12 @@ function loadEnv() {
 }
 loadEnv()
 
+// 媒体持久化根目录：默认用户主目录下 ZhongliData（不再用 /tmp，重启不丢）；
+// 部署到服务器时用环境变量 MEDIA_DATA_DIR 指定到数据盘
+const MEDIA_ROOT = process.env.MEDIA_DATA_DIR || path.join(os.homedir(), 'ZhongliData')
+
 const CFG = {
+  mediaRoot: MEDIA_ROOT,
   minimaxKey: process.env.MINIMAX_API_KEY || '',
   minimaxBase: process.env.MINIMAX_BASE || 'https://api.MiniMax.com/v1',
   doubaoClientId: process.env.DOUBAO_CLIENT_ID || '',
@@ -58,7 +73,9 @@ const CFG = {
   feishuNewVideoTableId: process.env.FEISHU_NEW_VIDEO_TABLE_ID || 'tbly8R5zwud22O58',
   feishuUserTableId: process.env.FEISHU_USER_TABLE_ID || 'tblEwFfTWRzrvBy4',
   feishuBase: process.env.FEISHU_BASE || 'https://open.feishu.cn',
-  videoDir: process.env.VIDEO_UPLOAD_DIR || '/tmp/zhongli-videos',
+  videoDir: process.env.VIDEO_UPLOAD_DIR || path.join(MEDIA_ROOT, 'videos'),
+  coverDir: path.join(MEDIA_ROOT, 'covers'),
+  transcodeDir: path.join(MEDIA_ROOT, 'transcoded'),
   // ── 阿里云 OSS ──
   ossAccessKeyId: process.env.ALI_OSS_ACCESS_KEY_ID || '',
   ossAccessKeySecret: process.env.ALI_OSS_ACCESS_KEY_SECRET || '',
@@ -69,8 +86,10 @@ const CFG = {
   ossPublicRead: (process.env.ALI_OSS_PUBLIC_READ || 'true').toLowerCase() === 'true',
 }
 
-// 确保视频目录存在
-if (!existsSync(CFG.videoDir)) mkdirSync(CFG.videoDir, { recursive: true })
+// 确保媒体持久化目录存在（videos / covers / transcoded）
+for (const d of [CFG.videoDir, CFG.coverDir, CFG.transcodeDir]) {
+  if (!existsSync(d)) mkdirSync(d, { recursive: true })
+}
 
 // ─── 素材种子数据（模拟飞书表格已入库视频）────────────────────────────────
 // 当飞书 API 不可达时，使用这些种子数据作为候选项池
@@ -3161,6 +3180,51 @@ async function handleApi(req, res) {
         }
       }
 
+      const isVideo = /\.(mp4|mov|avi|mkv|webm|flv|wmv|m4v)$/i.test(fileName)
+
+      // ── V1：自动生成统一尺寸封面 → 上传 OSS → 回填 DB（视频才做；单帧很快故 await，让响应直接带封面）──
+      let coverUrl = ''
+      let coverLocalUrl = ''
+      if (isVideo && mediaPipeline) {
+        try {
+          const coverName = `cover_${businessId.replace(/[^\w.\-]/g, '_').slice(0, 48)}.jpg`
+          const coverLocalPath = path.join(CFG.coverDir, coverName)
+          await mediaPipeline.generateCover({ input: savedPath, output: coverLocalPath, duration })
+          coverLocalUrl = `http://localhost:${PORT}/api/media/cover/${encodeURIComponent(coverName)}`
+          try {
+            const coverOss = await uploadToOss(coverLocalPath, `covers/${coverName}`)
+            coverUrl = coverOss.publicUrl
+          } catch (cOssErr) {
+            console.warn(`[mock-api] 封面 OSS 失败，用本地 URL: ${cOssErr.message}`)
+          }
+          const finalCover = coverUrl || coverLocalUrl
+          if (dbCjs) await dbCjs.updateMaterialFieldFromDb(businessId, { thumbnail_url: finalCover })
+          console.log(`[mock-api] 🖼️ 封面就绪: ${finalCover}`)
+        } catch (covErr) {
+          console.warn(`[mock-api] 封面处理失败（不阻塞）: ${covErr.message}`)
+        }
+      }
+
+      // ── V1：异步转码 H.264/AAC → 上传 OSS → 回填 playable_url（不 await，不阻塞响应）──
+      if (isVideo && mediaPipeline) {
+        const transName = `transcoded_${path.basename(savedName, path.extname(savedName))}.mp4`
+        const transPath = path.join(CFG.transcodeDir, transName)
+        mediaPipeline
+          .transcodeToMp4({ input: savedPath, output: transPath })
+          .then(async () => {
+            let transPlayUrl = `http://localhost:${PORT}/api/media/transcoded/${encodeURIComponent(transName)}`
+            try {
+              const tOss = await uploadToOss(transPath, `transcoded/${transName}`)
+              transPlayUrl = tOss.publicUrl
+            } catch (tErr) {
+              console.warn(`[mock-api] 转码文件 OSS 失败，用本地 URL: ${tErr.message}`)
+            }
+            if (dbCjs) await dbCjs.updateMaterialFieldFromDb(businessId, { playable_url: transPlayUrl })
+            console.log(`[mock-api] 🎞️ 转码就绪并回填: ${transPlayUrl}`)
+          })
+          .catch((tErr) => console.warn(`[mock-api] 转码失败（不阻塞）: ${tErr.message}`))
+      }
+
       // 推送到主视频表（OSS URL / 文件 Hash / 时长 / 状态 / 入库时间 / 人物姓名）
       let mainRecordId = null
       let mainPushError = null
@@ -3188,7 +3252,6 @@ async function handleApi(req, res) {
       }
 
       // 自动触发 AI 分析 + 写分镜表 + 回填主表（视频走真实分析，图片跳过）
-      const isVideo = /\.(mp4|mov|avi|mkv|webm|flv|wmv|m4v)$/i.test(fileName)
       let analysisTriggered = false
       if (isVideo && mainRecordId && ossResult) {
         analysisTriggered = true
@@ -3219,6 +3282,7 @@ async function handleApi(req, res) {
         size: buffer.length,
         file_hash: fileHash,
         duration,
+        cover_url: coverUrl || coverLocalUrl || '',
         db_material_id: dbRecord?.materialId || null,
         existing_by_hash: existingByHash
           ? { businessId: existingByHash.business_id, productName: existingByHash.product_name }
@@ -5435,18 +5499,55 @@ async function handleApi(req, res) {
   // ── Video Shots CRUD 由下方 /api/video/shots 分支统一处理（保留此处占位） ──
 
   // ── Static video files (供前端 <video> 播放本地文件) ────────────────────────
-  if (url.startsWith('/api/video/file/') && method === 'GET') {
-    const filename = decodeURIComponent(url.replace('/api/video/file/', ''))
-    const filePath = path.join(CFG.videoDir, filename)
-    if (!existsSync(filePath)) { sendError(res, 'Video not found', 404); return }
-    const stat = fs.statSync(filePath)
-    res.writeHead(200, {
-      'Content-Type': 'video/mp4',
-      'Content-Length': stat.size,
+  // 通用媒体文件服务：支持 HTTP Range（206），视频可拖动、浏览器按需加载
+  function serveMediaFile(filePath, contentType) {
+    if (!existsSync(filePath)) { sendError(res, 'File not found', 404); return }
+    const stat = statSync(filePath)
+    const range = req.headers.range
+    const baseHead = {
+      'Content-Type': contentType,
       'Access-Control-Allow-Origin': '*',
       'Accept-Ranges': 'bytes',
-    })
-    fs.createReadStream(filePath).pipe(res)
+    }
+    const m = range ? /bytes=(\d*)-(\d*)/.exec(range) : null
+    if (m) {
+      let start = m[1] ? parseInt(m[1], 10) : 0
+      let end = m[2] ? parseInt(m[2], 10) : stat.size - 1
+      if (start >= stat.size || end >= stat.size || start > end) {
+        res.writeHead(416, { 'Content-Range': `bytes */${stat.size}` })
+        res.end()
+        return
+      }
+      res.writeHead(206, {
+        ...baseHead,
+        'Content-Range': `bytes ${start}-${end}/${stat.size}`,
+        'Content-Length': end - start + 1,
+      })
+      fs.createReadStream(filePath, { start, end }).pipe(res)
+    } else {
+      res.writeHead(200, { ...baseHead, 'Content-Length': stat.size })
+      fs.createReadStream(filePath).pipe(res)
+    }
+  }
+
+  // 原始上传视频
+  if (url.startsWith('/api/video/file/') && method === 'GET') {
+    const filename = path.basename(decodeURIComponent(url.replace('/api/video/file/', '')))
+    serveMediaFile(path.join(CFG.videoDir, filename), 'video/mp4')
+    return
+  }
+
+  // 封面图（V1）
+  if (url.startsWith('/api/media/cover/') && method === 'GET') {
+    const name = path.basename(decodeURIComponent(url.replace('/api/media/cover/', '')))
+    serveMediaFile(path.join(CFG.coverDir, name), 'image/jpeg')
+    return
+  }
+
+  // 转码后视频（V1）
+  if (url.startsWith('/api/media/transcoded/') && method === 'GET') {
+    const name = path.basename(decodeURIComponent(url.replace('/api/media/transcoded/', '')))
+    serveMediaFile(path.join(CFG.transcodeDir, name), 'video/mp4')
     return
   }
 

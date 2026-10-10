@@ -669,6 +669,7 @@ async function updateMaterialFieldFromDb(businessId, fields) {
   const allow = [
     'person_name', 'product_name', 'industry', 'brand', 'department', 'client_name', 'quality', 'description',
     'analysis_status', 'shot_count', 'total_duration', 'selling_point_tags', 'category_tags',
+    'thumbnail_url', 'playable_url', 'file_path',
   ];
   const sets = [];
   const params = [];
