@@ -163,9 +163,8 @@ async function generateCover({ input, output, at, duration }) {
   const isUrl = /^https?:\/\//i.test(input)
   // scale 到“能装进目标框”的最大尺寸，再 pad 补齐到精确 W×H，居中黑边
   const vf =
-    `scale=${COVER_WIDTH}:${COVER_HEIGHT}:force_original_aspect_ratio=decrease,` +
-    `pad=${COVER_WIDTH}:${COVER_HEIGHT}:(ow-iw)/2:(oh-ih)/2:color=black,` +
-    `setsar=1`
+    `scale=${COVER_WIDTH}:${COVER_HEIGHT}:force_original_aspect_ratio=increase,` +
+    `crop=${COVER_WIDTH}:${COVER_HEIGHT},setsar=1`
   // 本地文件：-ss 放 -i 前（输入 seek，快）；网络 URL：-ss 放 -i 后（输出 seek，定位准）
   // -update 1：image2 覆盖写单图，避免 sequence pattern 警告
   const seekArgs = ['-ss', seek.toFixed(3)]

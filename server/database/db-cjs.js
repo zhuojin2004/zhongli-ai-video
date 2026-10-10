@@ -498,13 +498,16 @@ async function syncMaterialToFeishu(feishuApi, material, shots) {
  * 列出缺少封面、但已有可播放地址（OSS 视频）的素材——供历史封面批量回填。
  * 返回 { id, business_id, file_name, playable_url }
  */
-async function listMaterialsWithoutCoverFromDb(limit = 50) {
+async function listMaterialsWithoutCoverFromDb(limit = 50, opts = {}) {
   const db = getPglite();
+  // force=true：重做所有非 localhost（即 OSS 真实视频）的封面，无论是否已有
+  const coverCond = opts.force
+    ? ` AND playable_url NOT LIKE '%localhost%'`
+    : ` AND (thumbnail_url IS NULL OR TRIM(thumbnail_url) = '')`
   const r = await db.query(
     `SELECT id, business_id, file_name, playable_url
      FROM materials
-     WHERE (thumbnail_url IS NULL OR TRIM(thumbnail_url) = '')
-       AND playable_url IS NOT NULL AND TRIM(playable_url) != ''
+     WHERE playable_url IS NOT NULL AND TRIM(playable_url) != '' ${coverCond}
      ORDER BY _created_at DESC
      LIMIT $1;`,
     [Math.max(1, Math.min(500, Number(limit) || 50))],
