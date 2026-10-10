@@ -1760,7 +1760,7 @@ function getOssClient() {
  * @param {string} [objectKey] 自定义 OSS key（不含前缀），默认 = 时间戳_随机串_文件名
  * @returns {Promise<{key: string, url: string, publicUrl: string, bucket: string, region: string, etag?: string, size: number}>}
  */
-async function uploadToOss(localPath, objectKey) {
+async function uploadToOss(localPath, objectKey, opts = {}) {
   if (!existsSync(localPath)) throw new Error(`[OSS] 本地文件不存在: ${localPath}`)
   const client = getOssClient()
   const fileName = path.basename(localPath)
@@ -1785,7 +1785,9 @@ async function uploadToOss(localPath, objectKey) {
     }
     key = candidate
   }
-  const fullKey = prefix + key
+  // 显式传 objectKey 且 opts.skipPrefix 时，key 已是完整路径（如 covers/xx、transcoded/xx），
+  // 不再叠加默认 ALI_OSS_PREFIX（videos/）
+  const fullKey = opts.skipPrefix ? key : prefix + key
   console.log(`[OSS] 上传 ${localPath} -> oss://${CFG.ossBucket}/${fullKey}`)
   // ⚠️ P0 修复：传文件路径让 ali-oss SDK 内部走流式上传（避免 statSync 等同步调用阻塞事件循环）
   // 旧实现会在客户端代码里再 statSync 一次取 size，已改为 async stat
@@ -3187,12 +3189,12 @@ async function handleApi(req, res) {
       let coverLocalUrl = ''
       if (isVideo && mediaPipeline) {
         try {
-          const coverName = `cover_${businessId.replace(/[^\w.\-]/g, '_').slice(0, 48)}.jpg`
+          const coverName = `cover_${path.basename(savedName, path.extname(savedName))}.jpg`
           const coverLocalPath = path.join(CFG.coverDir, coverName)
           await mediaPipeline.generateCover({ input: savedPath, output: coverLocalPath, duration })
           coverLocalUrl = `http://localhost:${PORT}/api/media/cover/${encodeURIComponent(coverName)}`
           try {
-            const coverOss = await uploadToOss(coverLocalPath, `covers/${coverName}`)
+            const coverOss = await uploadToOss(coverLocalPath, `covers/${coverName}`, { skipPrefix: true })
             coverUrl = coverOss.publicUrl
           } catch (cOssErr) {
             console.warn(`[mock-api] 封面 OSS 失败，用本地 URL: ${cOssErr.message}`)
@@ -3214,7 +3216,7 @@ async function handleApi(req, res) {
           .then(async () => {
             let transPlayUrl = `http://localhost:${PORT}/api/media/transcoded/${encodeURIComponent(transName)}`
             try {
-              const tOss = await uploadToOss(transPath, `transcoded/${transName}`)
+              const tOss = await uploadToOss(transPath, `transcoded/${transName}`, { skipPrefix: true })
               transPlayUrl = tOss.publicUrl
             } catch (tErr) {
               console.warn(`[mock-api] 转码文件 OSS 失败，用本地 URL: ${tErr.message}`)
