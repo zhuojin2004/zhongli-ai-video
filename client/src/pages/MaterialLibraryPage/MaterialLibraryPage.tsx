@@ -154,7 +154,8 @@ export default function MaterialLibraryPage() {
   }
 
   const handleOpenVideo = (mat: MaterialItem) => {
-    const id = mat.dbId || mat.id
+    // 详情/删除/改名接口均按 business_id（mat.id，飞书 record_id）查询，不用内部 UUID 主键 dbId
+    const id = mat.id
     setSearchParams((prev) => {
       const next = new URLSearchParams(prev)
       next.set('video', id)

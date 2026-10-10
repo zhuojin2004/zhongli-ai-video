@@ -101,7 +101,7 @@ export default function VideosGridSection({
 
   const confirmDelete = async () => {
     if (!deleteTarget) return
-    const id = deleteTarget.dbId || deleteTarget.id
+    const id = deleteTarget.id
     setBusy(true)
     try {
       const r = await deleteVideoFromLibrary(id)
@@ -120,7 +120,7 @@ export default function VideosGridSection({
 
   const saveEdit = async () => {
     if (!editTarget) return
-    const id = editTarget.dbId || editTarget.id
+    const id = editTarget.id
     setBusy(true)
     try {
       const r = await updateVideoInLibrary(id, {
