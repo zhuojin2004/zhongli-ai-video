@@ -498,24 +498,38 @@ async function listProductGroupsFromDb() {
   const db = getPglite();
   await ensureSelfMigrations();
   const r = await db.query(`
-    SELECT
-      COALESCE(NULLIF(va.product_model, ''), NULLIF(m.product_name, ''), '未分类') AS product_model,
-      COUNT(*)::int AS video_count,
-      MAX(m._created_at) AS latest_at,
-      MIN(m.file_name) AS sample_file_name,
-      MIN(m.playable_url) AS sample_url
-    FROM materials m
-    LEFT JOIN video_analyses va ON va.material_id = m.id
-    WHERE COALESCE(NULLIF(va.product_model, ''), NULLIF(m.product_name, '')) IS NOT NULL
-    GROUP BY COALESCE(NULLIF(va.product_model, ''), NULLIF(m.product_name, ''), '未分类')
-    ORDER BY MAX(m._created_at) DESC;
+    WITH grouped AS (
+      SELECT
+        COALESCE(NULLIF(va.product_model, ''), NULLIF(m.product_name, ''), '未分类') AS gkey,
+        COUNT(*)::int AS video_count,
+        MAX(m._created_at) AS latest_at,
+        MIN(m.file_name) AS sample_file_name,
+        MIN(m.playable_url) AS sample_url
+      FROM materials m
+      LEFT JOIN video_analyses va ON va.material_id = m.id
+      WHERE COALESCE(NULLIF(va.product_model, ''), NULLIF(m.product_name, '')) IS NOT NULL
+      GROUP BY 1
+    )
+    SELECT g.*, cov.thumbnail_url AS sample_cover_url
+    FROM grouped g
+    LEFT JOIN LATERAL (
+      SELECT m2.thumbnail_url
+      FROM materials m2
+      LEFT JOIN video_analyses va2 ON va2.material_id = m2.id
+      WHERE COALESCE(NULLIF(va2.product_model, ''), NULLIF(m2.product_name, ''), '未分类') = g.gkey
+        AND NULLIF(m2.thumbnail_url, '') IS NOT NULL
+      ORDER BY m2._created_at DESC
+      LIMIT 1
+    ) cov ON true
+    ORDER BY g.latest_at DESC;
   `);
   return r.rows.map(row => ({
-    productModel: row.product_model,
+    productModel: row.gkey,
     videoCount: row.video_count,
     latestAt: row.latest_at,
     sampleFileName: row.sample_file_name,
     sampleUrl: row.sample_url,
+    sampleCoverUrl: row.sample_cover_url || '',
   }));
 }
 
@@ -526,23 +540,35 @@ async function listEmployeeGroupsFromDb() {
   const db = getPglite();
   await ensureSelfMigrations();
   const r = await db.query(`
-    SELECT
-      m.person_name,
-      COUNT(*)::int AS video_count,
-      MAX(m._created_at) AS latest_at,
-      MIN(m.file_name) AS sample_file_name,
-      MIN(m.playable_url) AS sample_url
-    FROM materials m
-    WHERE m.person_name IS NOT NULL AND TRIM(m.person_name) != ''
-    GROUP BY m.person_name
-    ORDER BY MAX(m._created_at) DESC;
+    WITH grouped AS (
+      SELECT
+        m.person_name AS gkey,
+        COUNT(*)::int AS video_count,
+        MAX(m._created_at) AS latest_at,
+        MIN(m.file_name) AS sample_file_name,
+        MIN(m.playable_url) AS sample_url
+      FROM materials m
+      WHERE m.person_name IS NOT NULL AND TRIM(m.person_name) != ''
+      GROUP BY 1
+    )
+    SELECT g.*, cov.thumbnail_url AS sample_cover_url
+    FROM grouped g
+    LEFT JOIN LATERAL (
+      SELECT m2.thumbnail_url
+      FROM materials m2
+      WHERE m2.person_name = g.gkey AND NULLIF(m2.thumbnail_url, '') IS NOT NULL
+      ORDER BY m2._created_at DESC
+      LIMIT 1
+    ) cov ON true
+    ORDER BY g.latest_at DESC;
   `);
   return r.rows.map(row => ({
-    personName: row.person_name,
+    personName: row.gkey,
     videoCount: row.video_count,
     latestAt: row.latest_at,
     sampleFileName: row.sample_file_name,
     sampleUrl: row.sample_url,
+    sampleCoverUrl: row.sample_cover_url || '',
   }));
 }
 

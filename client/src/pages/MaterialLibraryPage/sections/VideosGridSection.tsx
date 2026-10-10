@@ -57,6 +57,28 @@ function buildPageNumbers(current: number, total: number): (number | '…')[] {
   return out
 }
 
+/** 视频卡片骨架屏 */
+function VideoCardSkeleton() {
+  return (
+    <div className="overflow-hidden rounded-xl border border-border bg-card">
+      <div className="aspect-video bg-muted animate-pulse" />
+      <div className="p-3 space-y-2">
+        <div className="h-3.5 w-3/4 rounded bg-muted animate-pulse" />
+        <div className="h-2.5 w-full rounded bg-muted animate-pulse" />
+        <div className="h-2.5 w-2/3 rounded bg-muted animate-pulse" />
+      </div>
+    </div>
+  )
+}
+
+function VideoSkeletonGrid() {
+  return (
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+      {Array.from({ length: 12 }).map((_, i) => <VideoCardSkeleton key={i} />)}
+    </div>
+  )
+}
+
 export default function VideosGridSection({
   title,
   subtitle,
@@ -119,8 +141,17 @@ export default function VideosGridSection({
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center py-20">
-        <Loader2 className="size-6 animate-spin text-muted-foreground" />
+      <div className="space-y-4">
+        <div className="flex items-center gap-3">
+          <Button variant="ghost" size="icon" onClick={onBack} aria-label="返回">
+            <ArrowLeft className="size-4" />
+          </Button>
+          <div className="min-w-0 space-y-1.5">
+            <div className="h-4 w-40 rounded bg-muted animate-pulse" />
+            <div className="h-2.5 w-56 rounded bg-muted animate-pulse" />
+          </div>
+        </div>
+        <VideoSkeletonGrid />
       </div>
     )
   }

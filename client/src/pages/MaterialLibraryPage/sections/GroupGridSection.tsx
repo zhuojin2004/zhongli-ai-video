@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import { Clapperboard, User, ChevronRight, Loader2 } from 'lucide-react'
+import { Clapperboard, User, ChevronRight } from 'lucide-react'
 import type { ProductGroup, EmployeeGroup } from '@/api/materials'
 
 interface ProductGroupGridSectionProps {
@@ -63,15 +63,30 @@ function ProductCover({
   return <Clapperboard className="size-10 text-muted-foreground/40" />
 }
 
+/** 分组卡片骨架屏（结构与真实卡片一致，animate-pulse，避免布局跳动） */
+function GroupCardSkeleton() {
+  return (
+    <div className="overflow-hidden rounded-xl border border-border bg-card">
+      <div className="aspect-video bg-muted animate-pulse" />
+      <div className="p-3 space-y-2">
+        <div className="h-3.5 w-2/3 rounded bg-muted animate-pulse" />
+        <div className="h-3 w-1/3 rounded bg-muted animate-pulse" />
+      </div>
+    </div>
+  )
+}
+
+function GroupSkeletonGrid() {
+  return (
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+      {Array.from({ length: 8 }).map((_, i) => <GroupCardSkeleton key={i} />)}
+    </div>
+  )
+}
+
 export function ProductGroupGridSection({ groups, loading }: ProductGroupGridSectionProps) {
   const navigate = useNavigate()
-  if (loading) {
-    return (
-      <div className="flex items-center justify-center py-20">
-        <Loader2 className="size-6 animate-spin text-muted-foreground" />
-      </div>
-    )
-  }
+  if (loading) return <GroupSkeletonGrid />
   if (groups.length === 0) {
     return (
       <div className="text-center py-20 text-sm text-muted-foreground">
@@ -117,13 +132,7 @@ export function ProductGroupGridSection({ groups, loading }: ProductGroupGridSec
 
 export function EmployeeGroupGridSection({ groups, loading }: EmployeeGroupGridSectionProps) {
   const navigate = useNavigate()
-  if (loading) {
-    return (
-      <div className="flex items-center justify-center py-20">
-        <Loader2 className="size-6 animate-spin text-muted-foreground" />
-      </div>
-    )
-  }
+  if (loading) return <GroupSkeletonGrid />
   if (groups.length === 0) {
     return (
       <div className="text-center py-20 text-sm text-muted-foreground">
@@ -141,17 +150,7 @@ export function EmployeeGroupGridSection({ groups, loading }: EmployeeGroupGridS
           className="group relative overflow-hidden rounded-xl border border-border bg-card text-left transition hover:border-primary hover:shadow-lg"
         >
           <div className="aspect-video bg-muted flex items-center justify-center overflow-hidden">
-            {g.sampleUrl ? (
-              <video
-                src={g.sampleUrl}
-                className="w-full h-full object-cover"
-                muted
-                playsInline
-                preload="metadata"
-              />
-            ) : (
-              <User className="size-10 text-muted-foreground/40" />
-            )}
+            <ProductCover imageUrl={g.sampleCoverUrl} videoUrl={g.sampleUrl} alt={g.personName} />
           </div>
           <div className="p-3 space-y-1.5">
             <div className="flex items-center gap-2">
