@@ -3153,7 +3153,10 @@ async function handleApi(req, res) {
 
       // 同步写入 DB materials 表
       let dbRecord = null
-      const businessId = fileName.replace(/\.[^/.]+$/, '') + '-' + Date.now()
+      // business_id 永远用 ASCII 稳定键，避免中文/全角/特殊字符文件名进入 URL 后编码错乱（历史 404 根因）。
+      // 中文只作为 product_name / file_name 用于展示。
+      const shortHash = fileHash ? fileHash.slice(0, 12) : Math.random().toString(36).slice(2, 10)
+      const businessId = `upload_${Date.now()}_${shortHash}`
       if (dbCjs) {
         try {
           const productName = fileName.replace(/\.[^/.]+$/, '')
@@ -4433,9 +4436,12 @@ async function handleApi(req, res) {
   }
 
   // /api/library/video/:materialId  (云端：按 recordId 或 fileName 匹配)
-  const videoMatch = url.match(/^\/api\/library\/video\/([a-zA-Z0-9\-_]+)$/)
+  const videoMatch = url.match(/^\/api\/library\/video\/([^/]+)$/)
+  const videoRawId = videoMatch ? videoMatch[1] : ''
+  // 中文 business_id 经 axios encodeURIComponent 后为 %XX，需 decode 还原再查库
+  const videoIdDecoded = (() => { try { return decodeURIComponent(videoRawId) } catch { return videoRawId } })()
   if (videoMatch && method === 'GET') {
-    const materialId = videoMatch[1]
+    const materialId = videoIdDecoded
     try {
       // ⚠️ 业务员视图隔离：业务员只能看自己的某条素材详情，别人的 → 404
       const ctx = await getRequestUser(req)
@@ -4481,7 +4487,7 @@ async function handleApi(req, res) {
   // DELETE /api/library/video/:materialId — 真删：DB + OSS + 飞书
   if (videoMatch && method === 'DELETE') {
     if (!dbCjs) { sendError(res, 'DB not available', 503); return }
-    const materialId = videoMatch[1]
+    const materialId = videoIdDecoded
     try {
       // 1) 先取这条素材的详情（拿 oss key 和 feishu record id 用于后续清理）
       const mat = await dbCjs.getMaterialShotsByMaterialIdFromDb(materialId)
@@ -4560,7 +4566,7 @@ async function handleApi(req, res) {
   // 云端架构：飞书是 source of truth，必须同步两处
   // DB 仍保留（作为缓存/兼容），但飞书优先写入
   if (videoMatch && method === 'PATCH') {
-    const materialId = videoMatch[1]
+    const materialId = videoIdDecoded
     try {
       const body = JSON.parse(await readBody(req) || '{}')
       const updates = {}
@@ -5955,6 +5961,7 @@ async function syncFeishuVideosToDb(reason = 'scheduled') {
   _feishuSyncing = true
   const t0 = Date.now()
   try {
+    await dbCjs.ensureSelfMigrations() // 确保字段扩容（含 video_analyses/video_shots）完成再同步
     const cloud = await fetchAllVideosFromFeishuCloud()
     let inserted = 0, updated = 0, failed = 0
     for (const v of cloud.videos) {

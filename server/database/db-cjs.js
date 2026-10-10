@@ -28,9 +28,10 @@ let _migrated = false;
  * 自我迁移：每次启动检查必要列/索引是否存在（幂等）
  *  - 用于在 Drizzle journal 之外补加字段，避免跑 drizzle-kit
  */
-async function ensureSelfMigrations() {
-  if (_migrated) return;
-  const db = _pglite;
+let _migratePromise = null;
+
+async function runSelfMigrations() {
+  const db = getPglite();
   try {
     // 检查 materials.person_name 是否存在
     const r = await db.query(`
@@ -39,7 +40,7 @@ async function ensureSelfMigrations() {
     `);
     if (r.rows.length === 0) {
       console.log('[db-cjs] 自我迁移: ALTER TABLE materials ADD COLUMN person_name');
-      await db.query('ALTER TABLE "materials" ADD COLUMN IF NOT EXISTS "person_name" varchar(100);');
+      await db.query('ALTER TABLE "materials" ADD COLUMN IF NOT EXISTS "person_name" varchar(500);');
       await db.query('CREATE INDEX IF NOT EXISTS "materials_person_name_idx" ON "materials" ("person_name");');
     }
 
@@ -54,10 +55,32 @@ async function ensureSelfMigrations() {
     await db.query('ALTER TABLE "materials" ALTER COLUMN "industry" TYPE varchar(255);');
     await db.query('ALTER TABLE "materials" ALTER COLUMN "department" TYPE varchar(255);');
     await db.query('ALTER TABLE "materials" ALTER COLUMN "feishu_record_id" TYPE varchar(255);');
+
+    // V1：同步链路还写 video_analyses / video_shots，其中 AI 生成的行业、部门、场景、镜头描述
+    // 可能超过 varchar(100/50)，统一扩容，避免单条同步因 value too long 失败。
+    await db.query('ALTER TABLE "video_analyses" ALTER COLUMN "industry" TYPE varchar(255);');
+    await db.query('ALTER TABLE "video_analyses" ALTER COLUMN "department" TYPE varchar(255);');
+    await db.query('ALTER TABLE "video_analyses" ALTER COLUMN "quality" TYPE varchar(255);');
+    await db.query('ALTER TABLE "video_shots" ALTER COLUMN "scene" TYPE varchar(255);');
+    await db.query('ALTER TABLE "video_shots" ALTER COLUMN "camera" TYPE varchar(255);');
+    await db.query('ALTER TABLE "video_shots" ALTER COLUMN "shot_id" TYPE varchar(255);');
   } catch (e) {
     console.warn('[db-cjs] 自我迁移失败:', e.message);
   }
-  _migrated = true;
+}
+
+/**
+ * 自我迁移（单飞 singleflight）：所有调用 await 同一个 promise，
+ * 避免「启动时异步迁移」与「首次写入触发的迁移」并发重复执行 / 与同步竞争。
+ */
+function ensureSelfMigrations() {
+  if (_migrated) return Promise.resolve();
+  if (!_migratePromise) {
+    _migratePromise = runSelfMigrations()
+      .then(() => { _migrated = true })
+      .catch((e) => { console.warn('[db-cjs] self-migrate warn:', e.message); _migrated = true });
+  }
+  return _migratePromise;
 }
 
 
