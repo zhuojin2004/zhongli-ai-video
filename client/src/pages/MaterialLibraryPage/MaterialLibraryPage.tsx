@@ -1,5 +1,6 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
+import { useQueryClient } from '@tanstack/react-query'
 import { useRole } from '@/contexts/RoleContext'
 import { useAuth } from '@/contexts/AuthContext'
 import { Button } from '@/components/ui/button'
@@ -20,25 +21,16 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from '@/components/ui/pagination'
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-  DialogFooter,
-} from '@/components/ui/dialog'
 import { ArrowUpDown, Loader2, Search, Upload } from 'lucide-react'
-import { toast } from 'sonner'
 import {
-  listProductGroups,
-  listEmployeeGroups,
-  listVideosByProductModel,
-  listVideosByEmployeeName,
-  getVideoDetail,
-  type ProductGroup,
-  type EmployeeGroup,
-} from '@/api/materials'
+  useProductGroups,
+  useEmployeeGroups,
+  useProductVideos,
+  useEmployeeVideos,
+  useVideoDetail,
+  libraryKeys,
+} from '@/hooks/useLibrary'
+import type { ProductGroup, EmployeeGroup } from '@/api/materials'
 import type { MaterialItem } from '@shared/api.interface'
 import { ProductGroupGridSection, EmployeeGroupGridSection } from './sections/GroupGridSection'
 import VideosGridSection from './sections/VideosGridSection'
@@ -65,6 +57,7 @@ function buildPageNumbers(current: number, total: number): (number | '…')[] {
 export default function MaterialLibraryPage() {
   const [searchParams, setSearchParams] = useSearchParams()
   const navigate = useNavigate()
+  const qc = useQueryClient()
   const { role } = useRole()
   const { user } = useAuth()
   const isManager = role === 'operator' || role === 'admin'
@@ -93,113 +86,58 @@ export default function MaterialLibraryPage() {
   const [keyword, setKeyword] = useState('')
   const [sortBy, setSortBy] = useState<SortBy>('videoCount')
 
-  // Data
-  const [productGroups, setProductGroups] = useState<ProductGroup[]>([])
-  const [employeeGroups, setEmployeeGroups] = useState<EmployeeGroup[]>([])
-  const [groupVideos, setGroupVideos] = useState<MaterialItem[]>([])
-  const [videosTotal, setVideosTotal] = useState(0)
-  const [videosPage, setVideosPage] = useState(1)
-  const [videosTotalPages, setVideosTotalPages] = useState(1)
-  const [videosPageSize] = useState(12)
-  const [loadingGroups, setLoadingGroups] = useState(false)
-  const [loadingVideos, setLoadingVideos] = useState(false)
+  // ── React Query：分组 / 明细分页 / 详情 ─────────────────────────────────
+  const productGroupsQ = useProductGroups()
+  const employeeGroupsQ = useEmployeeGroups()
 
-  // 分组页（产品 / 员工）分页状态
+  // 分组页分页状态
   const [groupsPage, setGroupsPage] = useState(1)
   const [groupsPageSize] = useState(12)
 
-  // Detail dialog
-  const [detailMaterial, setDetailMaterial] = useState<MaterialItem | null>(null)
-  const [loadingDetail, setLoadingDetail] = useState(false)
+  // 明细分页（服务端分页）
+  const [videosPage, setVideosPage] = useState(1)
+  const [videosPageSize] = useState(12)
+  const realProductVideosQ = useProductVideos(model, videosPage, videosPageSize, isProductDetail)
+  const realEmployeeVideosQ = useEmployeeVideos(name, videosPage, videosPageSize, isEmployeeDetail)
 
-  // 顶层：拉分组
-  const fetchGroups = useCallback(() => {
-    setLoadingGroups(true)
-    Promise.all([listProductGroups(), listEmployeeGroups()])
-      .then(([pRes, eRes]) => {
-        setProductGroups(pRes.data || [])
-        setEmployeeGroups(eRes.data || [])
-      })
-      .catch((e) => {
-        console.error('[library] fetch groups failed:', e)
-        setProductGroups([])
-        setEmployeeGroups([])
-      })
-      .finally(() => setLoadingGroups(false))
-  }, [])
+  // 详情
+  const detailQ = useVideoDetail(videoId)
 
-  // 列表内容发生变化时的统一刷新（分组 + 当前分组的视频）
-  const handleListChanged = useCallback(() => {
-    fetchGroups()
-    if (isProductDetail) {
-      listVideosByProductModel(model, { page: videosPage, pageSize: videosPageSize })
-        .then((r) => {
-          setGroupVideos(r.data.videos || [])
-          setVideosTotal(r.data.total || 0)
-          setVideosTotalPages(r.data.totalPages || 1)
-        })
-        .catch(() => setGroupVideos([]))
-    } else if (isEmployeeDetail) {
-      listVideosByEmployeeName(name, { page: videosPage, pageSize: videosPageSize })
-        .then((r) => {
-          setGroupVideos(r.data.videos || [])
-          setVideosTotal(r.data.total || 0)
-          setVideosTotalPages(r.data.totalPages || 1)
-        })
-        .catch(() => setGroupVideos([]))
-    }
-  }, [fetchGroups, isProductDetail, isEmployeeDetail, model, name, videosPage, videosPageSize])
+  const productGroups: ProductGroup[] = productGroupsQ.data || []
+  const employeeGroups: EmployeeGroup[] = employeeGroupsQ.data || []
+  const loadingGroups = tab === 'product' ? productGroupsQ.isPending : employeeGroupsQ.isPending
 
-  useEffect(() => { fetchGroups() }, [fetchGroups])
+  // 明细数据（按当前 tab 取对应 hook）
+  let groupVideos: MaterialItem[] = []
+  let videosTotal = 0
+  let videosTotalPages = 1
+  if (isProductDetail && realProductVideosQ.data) {
+    groupVideos = realProductVideosQ.data.videos || []
+    videosTotal = realProductVideosQ.data.total || 0
+    videosTotalPages = realProductVideosQ.data.totalPages || 1
+  } else if (isEmployeeDetail && realEmployeeVideosQ.data) {
+    groupVideos = realEmployeeVideosQ.data.videos || []
+    videosTotal = realEmployeeVideosQ.data.total || 0
+    videosTotalPages = realEmployeeVideosQ.data.totalPages || 1
+  }
+  const loadingVideos = isProductDetail
+    ? realProductVideosQ.isPending
+    : isEmployeeDetail
+      ? realEmployeeVideosQ.isPending
+      : false
+
+  const detailMaterial: MaterialItem | null = detailQ.data || null
+  const loadingDetail = detailQ.isPending
+
+  // 列表内容变化（删除/改名）后失效缓存，React Query 自动重新拉取
+  const handleListChanged = () => {
+    qc.invalidateQueries({ queryKey: libraryKeys.all })
+  }
 
   // 切换分组时重置到第 1 页
   useEffect(() => {
     setVideosPage(1)
   }, [isProductDetail, isEmployeeDetail, model, name])
-
-  // 二级：拉分组下的视频（按 page 切片）
-  useEffect(() => {
-    if (!isProductDetail && !isEmployeeDetail) {
-      setGroupVideos([])
-      setVideosTotal(0)
-      setVideosTotalPages(1)
-      return
-    }
-    setLoadingVideos(true)
-    const p = isProductDetail
-      ? listVideosByProductModel(model, { page: videosPage, pageSize: videosPageSize })
-      : listVideosByEmployeeName(name, { page: videosPage, pageSize: videosPageSize })
-    p.then((r) => {
-      setGroupVideos(r.data.videos || [])
-      setVideosTotal(r.data.total || 0)
-      setVideosTotalPages(r.data.totalPages || 1)
-    })
-      .catch((e) => {
-        console.error('[library] fetch group videos failed:', e)
-        setGroupVideos([])
-        setVideosTotal(0)
-        setVideosTotalPages(1)
-      })
-      .finally(() => setLoadingVideos(false))
-    // 滚到顶部以便看新页
-    if (typeof window !== 'undefined') window.scrollTo({ top: 0, behavior: 'smooth' })
-  }, [isProductDetail, isEmployeeDetail, model, name, videosPage, videosPageSize])
-
-  // 三级：拉视频详情（分镜）
-  useEffect(() => {
-    if (!videoId) {
-      setDetailMaterial(null)
-      return
-    }
-    setLoadingDetail(true)
-    getVideoDetail(videoId)
-      .then((r) => setDetailMaterial(r.data))
-      .catch((e) => {
-        console.error('[library] fetch video detail failed:', e)
-        setDetailMaterial(null)
-      })
-      .finally(() => setLoadingDetail(false))
-  }, [videoId])
 
   // 切 tab / 切关键词时回到第 1 页
   useEffect(() => {
@@ -359,7 +297,7 @@ export default function MaterialLibraryPage() {
       ) : null}
 
       {isSalesperson && !isEmployeeDetail ? (
-        <div className="flex items-center gap-2 text-sm text-muted-foreground">
+        <div className="flex items-center gap-2 text-sm text-foreground">
           <Loader2 className="size-4 animate-spin" />
           <span>正在为你准备 {myName} 的视频素材…</span>
         </div>
