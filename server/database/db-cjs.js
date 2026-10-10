@@ -494,6 +494,24 @@ async function syncMaterialToFeishu(feishuApi, material, shots) {
  * 列出产品分组（DISTINCT product_model from video_analyses + JOIN materials）
  * 返回：[{ productModel, videoCount, latestVideoAt, sampleFileName, samplePlayableUrl }]
  */
+/**
+ * 列出缺少封面、但已有可播放地址（OSS 视频）的素材——供历史封面批量回填。
+ * 返回 { id, business_id, file_name, playable_url }
+ */
+async function listMaterialsWithoutCoverFromDb(limit = 50) {
+  const db = getPglite();
+  const r = await db.query(
+    `SELECT id, business_id, file_name, playable_url
+     FROM materials
+     WHERE (thumbnail_url IS NULL OR TRIM(thumbnail_url) = '')
+       AND playable_url IS NOT NULL AND TRIM(playable_url) != ''
+     ORDER BY _created_at DESC
+     LIMIT $1;`,
+    [Math.max(1, Math.min(500, Number(limit) || 50))],
+  );
+  return r.rows;
+}
+
 async function listProductGroupsFromDb() {
   const db = getPglite();
   await ensureSelfMigrations();
@@ -953,6 +971,7 @@ module.exports = {
   ensureSelfMigrations,
   upsertMaterial,
   listMaterialsFromDb,
+  listMaterialsWithoutCoverFromDb,
   listProductGroupsFromDb,
   listEmployeeGroupsFromDb,
   listMaterialsByProductModelFromDb,

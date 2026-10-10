@@ -160,21 +160,19 @@ async function generateCover({ input, output, at, duration }) {
   if (!input || !output) throw new Error('generateCover 缺少 input/output')
   ensureDir(path.dirname(output))
   const seek = typeof at === 'number' ? at : coverSeekTime(duration || 0)
+  const isUrl = /^https?:\/\//i.test(input)
   // scale 到“能装进目标框”的最大尺寸，再 pad 补齐到精确 W×H，居中黑边
   const vf =
     `scale=${COVER_WIDTH}:${COVER_HEIGHT}:force_original_aspect_ratio=decrease,` +
     `pad=${COVER_WIDTH}:${COVER_HEIGHT}:(ow-iw)/2:(oh-ih)/2:color=black,` +
     `setsar=1`
-  const args = [
-    '-y',
-    '-ss', seek.toFixed(3),
-    '-i', input,
-    '-frames:v', '1',
-    '-vf', vf,
-    '-q:v', '3',
-    '-f', 'image2',
-    output,
-  ]
+  // 本地文件：-ss 放 -i 前（输入 seek，快）；网络 URL：-ss 放 -i 后（输出 seek，定位准）
+  // -update 1：image2 覆盖写单图，避免 sequence pattern 警告
+  const seekArgs = ['-ss', seek.toFixed(3)]
+  const tailArgs = ['-frames:v', '1', '-update', '1', '-vf', vf, '-q:v', '3', '-f', 'image2', output]
+  const args = isUrl
+    ? ['-y', '-i', input, ...seekArgs, ...tailArgs]
+    : ['-y', ...seekArgs, '-i', input, ...tailArgs]
   try {
     await runCmd(FFMPEG, args)
   } catch (e) {

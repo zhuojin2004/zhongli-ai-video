@@ -3054,6 +3054,19 @@ async function handleApi(req, res) {
     return
   }
 
+  // ── 历史视频封面批量回填（后台异步执行，立即返回；结果看服务端日志）──
+  if (url === '/api/admin/backfill-covers' && method === 'POST') {
+    let body = {}
+    try { body = await readBody(req) } catch { body = {} }
+    const limit = Number(body.limit) || 20
+    const at = Number(body.at) || 3
+    backfillCovers({ limit, at })
+      .then((r) => console.log('[mock-api] backfill-covers 完成', r))
+      .catch((e) => console.warn('[mock-api] backfill-covers 异常', e.message))
+    sendJson(res, { started: true, limit, at, note: '后台回填中，完成情况见服务端日志；重复调用会跳过已回填项' })
+    return
+  }
+
   // ── File Upload (bypass getDataloom in dev) ────────────────────────────────
   if (url === '/api/upload' && method === 'POST') {
     const contentType = req.headers['content-type'] || ''
@@ -5898,6 +5911,43 @@ const server = http.createServer(async (req, res) => {
 
 // ── V1：飞书 → DB 后台增量同步（请求链路不再实时拉飞书，列表直查 DB）─────────
 let _feishuSyncing = false
+/**
+ * 历史视频封面批量回填：
+ * 对 DB 中“无封面、但有 OSS 可播放地址”的视频，直接用 ffmpeg 对 OSS URL 抽帧
+ * （无需先完整下载，单条约 3–8s）→ 上传 covers/ → 回填 thumbnail_url。
+ * 可重复执行：已回填的会因 thumbnail_url 非空而自动跳过。
+ */
+async function backfillCovers({ limit = 20, at = 3 } = {}) {
+  if (!dbCjs) return { processed: 0, ok: 0, fail: 0, error: 'db 未就绪' }
+  const pending = await dbCjs.listMaterialsWithoutCoverFromDb(limit)
+  let ok = 0
+  let fail = 0
+  for (const m of pending) {
+    try {
+      const safe = String(m.business_id || m.id).replace(/[^a-zA-Z0-9_-]/g, '_').slice(0, 60)
+      const coverName = `backfill_${safe}.jpg`
+      const coverLocalPath = path.join(CFG.coverDir, coverName)
+      await mediaPipeline.generateCover({ input: m.playable_url, output: coverLocalPath, at })
+      let coverUrl = ''
+      try {
+        const uploaded = await uploadToOss(coverLocalPath, `covers/${coverName}`, { skipPrefix: true })
+        coverUrl = uploaded.publicUrl
+      } catch (ossErr) {
+        coverUrl = `http://localhost:${PORT}/api/media/cover/${encodeURIComponent(coverName)}`
+      }
+      await dbCjs.updateMaterialFieldFromDb(m.business_id, { thumbnail_url: coverUrl })
+      ok += 1
+      console.log(`[backfill] ${ok}/${pending.length} ${m.file_name} -> ${coverUrl}`)
+    } catch (e) {
+      fail += 1
+      console.warn(`[backfill] 失败 ${m.file_name}: ${e.message}`)
+    }
+  }
+  const result = { processed: pending.length, ok, fail }
+  console.log('[backfill] 本轮结束', result)
+  return result
+}
+
 async function syncFeishuVideosToDb(reason = 'scheduled') {
   if (!dbCjs) return { synced: 0, reason }
   if (_feishuSyncing) { console.log('[feishu-sync] 上一轮仍在进行，本轮跳过'); return { skipped: true } }
