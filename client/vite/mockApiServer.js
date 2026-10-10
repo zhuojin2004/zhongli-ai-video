@@ -4338,17 +4338,22 @@ async function handleApi(req, res) {
         return
       }
       if (dbCjs) {
-        let list = await dbCjs.listMaterialsByProductModelFromDb(model)
+        let payload
         if (ctx.isSalesperson) {
-          list = list.filter((m) => (m.person_name || m.personName) === (ctx.user?.name || ''))
+          // 业务员：只看该型号下本人的视频（本人数据量小，取该型号后裁剪再分页）
+          const own = (await dbCjs.listMaterialsByProductModelFromDb(model))
+            .filter((m) => m.personName === (ctx.user?.name || ''))
+          const totalDb = own.length
+          const totalPagesDb = Math.max(1, Math.ceil(totalDb / pageSize))
+          const startDb = (page - 1) * pageSize
+          payload = { productModel: model, videos: own.slice(startDb, startDb + pageSize), total: totalDb, page, pageSize, totalPages: totalPagesDb }
+        } else {
+          // 管理员：SQL 级服务端分页（COUNT + LIMIT/OFFSET）
+          const p = await dbCjs.listMaterialsByProductModelPagedFromDb(model, { page, pageSize })
+          payload = { productModel: model, videos: p.items, total: p.total, page, pageSize, totalPages: p.totalPages }
         }
-        const allDb = [...list].sort((a, b) => new Date(b._createdAt || 0).getTime() - new Date(a._createdAt || 0).getTime())
-        const totalDb = allDb.length
-        const totalPagesDb = Math.max(1, Math.ceil(totalDb / pageSize))
-        const startDb = (page - 1) * pageSize
-        const videosDb = allDb.slice(startDb, startDb + pageSize)
-        console.log(`[mock-api] /api/library/product/${model} (DB fallback${ctx.isSalesperson ? `, 业务员=${ctx.user.name} 裁剪` : ''}) page=${page}/${totalPagesDb} -> ${videosDb.length}/${totalDb} 个视频`)
-        sendJson(res, { productModel: model, videos: videosDb, total: totalDb, page, pageSize, totalPages: totalPagesDb })
+        console.log(`[mock-api] /api/library/product/${model} (DB${ctx.isSalesperson ? `, 业务员=${ctx.user.name} 裁剪` : ''}) page=${page}/${payload.totalPages} -> ${payload.videos.length}/${payload.total} 个视频`)
+        sendJson(res, payload)
         return
       }
       sendJson(res, { productModel: model, videos: [], total: 0, page: 1, pageSize, totalPages: 1 })
@@ -4399,14 +4404,10 @@ async function handleApi(req, res) {
         return
       }
       if (dbCjs) {
-        const list = await dbCjs.listMaterialsByEmployeeNameFromDb(name)
-        const allDb = [...list].sort((a, b) => new Date(b._createdAt || 0).getTime() - new Date(a._createdAt || 0).getTime())
-        const totalDb = allDb.length
-        const totalPagesDb = Math.max(1, Math.ceil(totalDb / pageSize))
-        const startDb = (page - 1) * pageSize
-        const videosDb = allDb.slice(startDb, startDb + pageSize)
-        console.log(`[mock-api] /api/library/employee/${name} (DB fallback${ctx.isSalesperson ? `, 业务员=${ctx.user.name} 强制裁剪` : ''}) page=${page}/${totalPagesDb} -> ${videosDb.length}/${totalDb} 个视频`)
-        sendJson(res, { personName: name, videos: videosDb, total: totalDb, page, pageSize, totalPages: totalPagesDb })
+        // SQL 级服务端分页（name 已在上方对业务员强制为本人）
+        const p = await dbCjs.listMaterialsByEmployeeNamePagedFromDb(name, { page, pageSize })
+        console.log(`[mock-api] /api/library/employee/${name} (DB${ctx.isSalesperson ? `, 业务员=${ctx.user.name} 强制裁剪` : ''}) page=${page}/${p.totalPages} -> ${p.items.length}/${p.total} 个视频`)
+        sendJson(res, { personName: name, videos: p.items, total: p.total, page, pageSize, totalPages: p.totalPages })
         return
       }
       sendJson(res, { personName: name, videos: [], total: 0, page: 1, pageSize, totalPages: 1 })

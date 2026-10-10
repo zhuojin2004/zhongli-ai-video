@@ -625,6 +625,66 @@ async function listMaterialsByEmployeeNameFromDb(personName) {
   return r.rows.map(_materialRowToObject);
 }
 
+// 规范化分页参数并补齐 totalPages
+function _normalizePage(page, pageSize) {
+  return {
+    page: Math.max(1, parseInt(page, 10) || 1),
+    pageSize: Math.min(100, Math.max(1, parseInt(pageSize, 10) || 12)),
+  }
+}
+function _pagedResult(items, total, page, pageSize) {
+  return { items, total, page, pageSize, totalPages: Math.max(1, Math.ceil(total / pageSize)) }
+}
+
+/**
+ * 按产品型号分页列出视频（SQL 级 COUNT + LIMIT/OFFSET）
+ */
+async function listMaterialsByProductModelPagedFromDb(productModel, opts = {}) {
+  const { page, pageSize } = _normalizePage(opts.page, opts.pageSize)
+  if (!productModel) return _pagedResult([], 0, page, pageSize)
+  const db = getPglite()
+  await ensureSelfMigrations()
+  const where = `WHERE COALESCE(NULLIF(va.product_model, ''), NULLIF(m.product_name, ''), '未分类') = $1`
+  const c = await db.query(
+    `SELECT COUNT(*)::int AS n FROM materials m LEFT JOIN video_analyses va ON va.material_id = m.id ${where}`,
+    [productModel],
+  )
+  const total = c.rows[0].n
+  const r = await db.query(`
+    SELECT ${_MATERIAL_SELECT}
+    FROM materials m
+    LEFT JOIN video_analyses va ON va.material_id = m.id
+    ${where}
+    ORDER BY m._created_at DESC
+    LIMIT $2 OFFSET $3;
+  `, [productModel, pageSize, (page - 1) * pageSize])
+  return _pagedResult(r.rows.map(_materialRowToObject), total, page, pageSize)
+}
+
+/**
+ * 按员工姓名分页列出视频（SQL 级 COUNT + LIMIT/OFFSET）
+ */
+async function listMaterialsByEmployeeNamePagedFromDb(personName, opts = {}) {
+  const { page, pageSize } = _normalizePage(opts.page, opts.pageSize)
+  if (!personName) return _pagedResult([], 0, page, pageSize)
+  const db = getPglite()
+  await ensureSelfMigrations()
+  const c = await db.query(
+    `SELECT COUNT(*)::int AS n FROM materials m WHERE m.person_name = $1`,
+    [personName],
+  )
+  const total = c.rows[0].n
+  const r = await db.query(`
+    SELECT ${_MATERIAL_SELECT}
+    FROM materials m
+    LEFT JOIN video_analyses va ON va.material_id = m.id
+    WHERE m.person_name = $1
+    ORDER BY m._created_at DESC
+    LIMIT $2 OFFSET $3;
+  `, [personName, pageSize, (page - 1) * pageSize])
+  return _pagedResult(r.rows.map(_materialRowToObject), total, page, pageSize)
+}
+
 /**
  * 取指定素材的全部分镜（含 video_analyses + video_shots）
  */
@@ -871,6 +931,8 @@ module.exports = {
   listEmployeeGroupsFromDb,
   listMaterialsByProductModelFromDb,
   listMaterialsByEmployeeNameFromDb,
+  listMaterialsByProductModelPagedFromDb,
+  listMaterialsByEmployeeNamePagedFromDb,
   getMaterialShotsByMaterialIdFromDb,
   updateMaterialFieldFromDb,
   deleteMaterialByIdFromDb,
