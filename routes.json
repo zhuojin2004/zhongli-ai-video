@@ -1,0 +1,14 @@
+[
+  {
+    "path": "/login"
+  },
+  {
+    "path": "/"
+  },
+  {
+    "path": "/materials"
+  },
+  {
+    "path": "/upload"
+  }
+]
