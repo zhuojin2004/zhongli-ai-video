@@ -18,8 +18,8 @@ type AnalysisResult = Omit<
   'id' | 'createdAt' | 'updatedAt'
 >
 
-const MINIMAX_API_KEY = '***MINIMAX_KEY_REMOVED***'
-const MINIMAX_BASE = 'https://api.MiniMax.com/v1'
+const MINIMAX_API_KEY = process.env.MINIMAX_API_KEY || ''
+const MINIMAX_BASE = process.env.MINIMAX_BASE || 'https://api.minimaxi.com/v1'
 
 interface KimiFileResponse {
   id: string

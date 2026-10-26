@@ -37,7 +37,7 @@
 - 响应解析维持 `data.choices[0].message.content` + `JSON.parse` 的逻辑
 
 ### 3.4 环境变量
-- 新增 `MINIMAX_API_KEY`，值为用户提供的 `***MINIMAX_KEY_REMOVED***`
+- 新增 `MINIMAX_API_KEY`，值为用户提供的 MiniMax 密钥（密钥已轮换，明文不在此记录）
 - 用户需要在妙搭环境变量配置里设置 `MINIMAX_API_KEY=<key>`（或在 `server/main.ts` 启动时读 .env；平台默认不读 .env，所以优先用环境变量配置页设置）
 - 若暂时未设置环境变量，保留现有的 mock fallback 兜底逻辑（`if (!MINIMAX_API_KEY) → mockAnalyze`）
 
