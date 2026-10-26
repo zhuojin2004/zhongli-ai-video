@@ -14,6 +14,8 @@
     "dev:client": "NODE_ENV=development vite --config vite.config.ts",
     "build:server": "NODE_ENV=production nest build",
     "build:client": "NODE_ENV=production vite build --config vite.config.ts",
+    "build:static": "VITE_STATIC_DEMO=true NODE_ENV=production vite build --config vite.config.ts",
+    "preview:static": "vite preview --config vite.config.ts",
     "build:prod": "npm run build:server && npm run build:client",
     "start": "NODE_ENV=production node main.js",
     "type:check:server": "tsc --noEmit --project tsconfig.node.json",

@@ -68,5 +68,8 @@ pnpm-lock.yaml
 
 # Local database runtime (PGlite) and archives
 data/
+# ...but keep the static-demo bundled JSON (needed for GitHub Pages demo build)
+!client/src/static-demo/data/
+!client/src/static-demo/data/**
 *.log
 *.zip

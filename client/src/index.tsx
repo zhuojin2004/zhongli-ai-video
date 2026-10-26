@@ -17,10 +17,23 @@ const queryClient = new QueryClient({
   },
 });
 
+/**
+ * 路由 basename：
+ * - 优先用平台注入的 CLIENT_BASE_PATH（妙搭部署时为真实子路径）
+ * - 但静态构建时该值是未替换的占位符「{{basename}}」，需排除
+ * - 兜底用 Vite 的 BASE_URL（即 vite.config 的 base，GitHub Pages 下为 /zhongli-ai-video/）
+ */
+function resolveBaseName(): string {
+  const fromEnv = process.env.CLIENT_BASE_PATH;
+  if (fromEnv && !fromEnv.includes("{{")) return fromEnv;
+  const fromVite = (import.meta.env.BASE_URL || "/").replace(/\/$/, "");
+  return fromVite || "/";
+}
+
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
-      <BrowserRouter basename={process.env.CLIENT_BASE_PATH || "/"}>
+      <BrowserRouter basename={resolveBaseName()}>
         <div className="min-h-screen bg-background">
           <ErrorBoundary
             fallbackRender={({ error, resetErrorBoundary }) => (

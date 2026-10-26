@@ -328,7 +328,9 @@ function VideoCard({
   const posterSrc = video.thumbnailUrl || video.shots?.[0]?.keyframePath || ''
   // 懒加载：仅当卡片进入视口时才开始 fetch 视频元数据
   const wrapRef = useRef<HTMLDivElement | null>(null)
-  const [shouldLoad, setShouldLoad] = useState(false)
+  const isStaticDemo = import.meta.env.VITE_STATIC_DEMO === 'true'
+  // 静态演示模式直接加载（内嵌浏览器 IntersectionObserver 可能不触发）
+  const [shouldLoad, setShouldLoad] = useState(isStaticDemo)
 
   useEffect(() => {
     if (!wrapRef.current || shouldLoad) return
@@ -350,8 +352,13 @@ function VideoCard({
       { rootMargin: '200px 0px', threshold: 0.01 },
     )
     io.observe(el)
-    return () => io.disconnect()
-  }, [shouldLoad])
+    // 兜底：部分内嵌浏览器 IntersectionObserver 不触发回调，1.5s 后强制加载
+    const fallback = window.setTimeout(() => setShouldLoad(true), 1500)
+    return () => {
+      io.disconnect()
+      window.clearTimeout(fallback)
+    }
+  }, [shouldLoad, isStaticDemo])
 
   return (
     <button
@@ -374,7 +381,7 @@ function VideoCard({
             src={posterSrc}
             alt={video.fileName || ''}
             className="w-full h-full object-cover"
-            loading="lazy"
+            loading="eager"
           />
         ) : (
           <div className="flex flex-col items-center gap-1 text-muted-foreground/60">

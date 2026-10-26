@@ -192,7 +192,7 @@ async function generateCover({ input, output, at, duration }) {
  * @param {number} [p.crf=23]      画质（越小越清晰、越大文件越小）
  * @returns {Promise<{output:string}>}
  */
-async function transcodeToMp4({ input, output, hasAudio, height, preset = 'veryfast', crf = 23 }) {
+async function transcodeToMp4({ input, output, hasAudio, height, preset = 'veryfast', crf = 23, timeoutMs = 480000 }) {
   if (!input || !output) throw new Error('transcodeToMp4 缺少 input/output')
   ensureDir(path.dirname(output))
   let audioPresent = hasAudio
@@ -223,7 +223,7 @@ async function transcodeToMp4({ input, output, hasAudio, height, preset = 'veryf
   }
   args.push(output)
   try {
-    await runCmd(FFMPEG, args)
+    await runCmd(FFMPEG, args, { timeoutMs })
   } catch (e) {
     throw new Error(`转码失败[${enc.name}]: ${e.message} | ${(e.stderr || '').slice(-300)}`)
   }

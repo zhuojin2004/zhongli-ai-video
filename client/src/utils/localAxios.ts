@@ -3,6 +3,7 @@
  * 所有请求通过 Vite proxy 转发到 localhost:9099 mock server
  */
 import axios from 'axios'
+import { installStaticDemo } from '@/static-demo'
 
 // 创建 axios 实例，baseURL 为 /（通过 Vite proxy 转发）
 // ⚠️ 上传链路耗时：本地写文件 1-5s + OSS 上传 1-3 分钟 + 飞书写主表 3-5s + AI 分析 0-180s
@@ -74,5 +75,13 @@ clipAxios.interceptors.response.use(
     return Promise.reject(new Error(message))
   },
 )
+
+// 静态演示构建（VITE_STATIC_DEMO=true）：所有 axios 请求改由本地 mock 数据响应，
+// 无需后端，可直接部署到 GitHub Pages 等纯静态托管。
+if (import.meta.env.VITE_STATIC_DEMO === 'true') {
+  installStaticDemo(localAxios)
+  installStaticDemo(analyzeAxios)
+  installStaticDemo(clipAxios)
+}
 
 export { localAxios, analyzeAxios, clipAxios }

@@ -90,7 +90,14 @@ function brandOverridePlugin(): Plugin {
 // Clear preset's proxy and set our own /api → localhost:9099
 // AI 分析链路（抽帧 + OSS + MiniMax-M3 + 飞书写入）实测 60-180s，
 // 这里把 proxy timeout 拉到 10 分钟，避免 Vite / node 默认的 2 分钟切断长请求。
+
+// 静态演示版（GitHub Pages）：资源路径需要带仓库名子目录
+const isStaticDemo = process.env.VITE_STATIC_DEMO === 'true'
+
 export default defineConfig({
+  // 部署到 https://zhuojin2004.github.io/zhongli-ai-video/ 时，
+  // 所有静态资源前缀必须是 /zhongli-ai-video/
+  base: isStaticDemo ? '/zhongli-ai-video/' : '/',
   plugins: [brandOverridePlugin()],
   server: {
     proxy: {
@@ -101,5 +108,10 @@ export default defineConfig({
         timeout: 600000,
       },
     },
+  },
+  build: {
+    outDir: 'dist',
+    // 视频数据 JSON 约 1.5MB，放宽 chunk 警告
+    chunkSizeWarningLimit: 2000,
   },
 } as UserConfig)

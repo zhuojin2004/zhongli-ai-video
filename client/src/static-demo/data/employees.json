@@ -1,0 +1,74 @@
+[
+  {
+    "personName": "测试员",
+    "videoCount": 1,
+    "latestAt": "2026-10-10T16:15:31.493Z",
+    "sampleFileName": "upload_1791642037688.mp4",
+    "sampleUrl": "https://zhongli2026.oss-cn-hangzhou.aliyuncs.com/videos/upload_1791648344598.mp4",
+    "sampleCoverUrl": "https://zhongli2026.oss-cn-hangzhou.aliyuncs.com/covers/backfill_feishu_recvxELcCCDS0y.jpg"
+  },
+  {
+    "personName": "戴手表的中年男性（疑似店主或销售负责人）、戴手表的中年男性（正在离场）",
+    "videoCount": 1,
+    "latestAt": "2026-10-10T16:15:31.491Z",
+    "sampleFileName": "邀约-1.mp4",
+    "sampleUrl": "https://zhongli2026.oss-cn-hangzhou.aliyuncs.com/transcoded/upload_1788485432920.mp4",
+    "sampleCoverUrl": "https://zhongli2026.oss-cn-hangzhou.aliyuncs.com/covers/backfill_feishu_recvud8DMyCXyF.jpg"
+  },
+  {
+    "personName": "穿浅蓝衬衫深色长裤的中年男性销售、讲解员、穿浅蓝衬衫深色长裤的中年男性（即将离开画面）",
+    "videoCount": 1,
+    "latestAt": "2026-10-10T16:15:31.489Z",
+    "sampleFileName": "RPG202-3.mp4",
+    "sampleUrl": "http://zhongli2026.oss-cn-hangzhou.aliyuncs.com/videos/upload_1788452129953.mp4",
+    "sampleCoverUrl": "https://zhongli2026.oss-cn-hangzhou.aliyuncs.com/covers/backfill_feishu_recvuaSUFxFSd6.jpg"
+  },
+  {
+    "personName": "无人物出镜",
+    "videoCount": 1,
+    "latestAt": "2026-10-10T16:15:31.488Z",
+    "sampleFileName": "邀约-3.mp4",
+    "sampleUrl": "http://zhongli2026.oss-cn-hangzhou.aliyuncs.com/videos/upload_1788451919675.mp4",
+    "sampleCoverUrl": "https://zhongli2026.oss-cn-hangzhou.aliyuncs.com/covers/backfill_feishu_recvuaS03ArWOw.jpg"
+  },
+  {
+    "personName": "刘宇 (改名)",
+    "videoCount": 2,
+    "latestAt": "2026-10-10T16:15:31.483Z",
+    "sampleFileName": "feicang_5s.mp4",
+    "sampleUrl": "http://zhongli2026.oss-cn-hangzhou.aliyuncs.com/videos/upload_1788888812835.mp4",
+    "sampleCoverUrl": "https://zhongli2026.oss-cn-hangzhou.aliyuncs.com/covers/backfill_feishu_recvuIiDWcPZl6.jpg"
+  },
+  {
+    "personName": "jensen",
+    "videoCount": 1,
+    "latestAt": "2026-10-10T16:15:31.212Z",
+    "sampleFileName": "feicang.mp4",
+    "sampleUrl": "http://zhongli2026.oss-cn-hangzhou.aliyuncs.com/videos/upload_1788885137941.mp4",
+    "sampleCoverUrl": "https://zhongli2026.oss-cn-hangzhou.aliyuncs.com/covers/backfill_feishu_recvuEbQcBwPg3.jpg"
+  },
+  {
+    "personName": "王晓明",
+    "videoCount": 1,
+    "latestAt": "2026-10-10T16:15:31.208Z",
+    "sampleFileName": "test_p0_user.mp4",
+    "sampleUrl": "https://zhongli2026.oss-cn-hangzhou.aliyuncs.com/transcoded/upload_1788891532416.mp4",
+    "sampleCoverUrl": "https://zhongli2026.oss-cn-hangzhou.aliyuncs.com/covers/backfill_feishu_recvuCxWyu5vFU.jpg"
+  },
+  {
+    "personName": "系统管理员",
+    "videoCount": 1,
+    "latestAt": "2026-10-10T16:15:31.185Z",
+    "sampleFileName": "smoke-final.mp4",
+    "sampleUrl": "https://zhongli2026.oss-cn-hangzhou.aliyuncs.com/videos/upload_1788934454952.mp4",
+    "sampleCoverUrl": "https://zhongli2026.oss-cn-hangzhou.aliyuncs.com/covers/backfill_feishu_recvuuQnAT77Ff.jpg"
+  },
+  {
+    "personName": "张三",
+    "videoCount": 2,
+    "latestAt": "2026-10-10T16:15:31.180Z",
+    "sampleFileName": "RPG-普洛斯.mp4",
+    "sampleUrl": "https://zhongli2026.oss-cn-hangzhou.aliyuncs.com/transcoded/包装行业/RPG-欧克.mp4",
+    "sampleCoverUrl": "https://zhongli2026.oss-cn-hangzhou.aliyuncs.com/covers/backfill_feishu_recvuF5r2ZPnuJ.jpg"
+  }
+]
